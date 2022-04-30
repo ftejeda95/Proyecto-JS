@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+;
+}
+body{
+    background-color: beige;
+    height: 100vh;
+}
+body header nav{
+    background-color: rgb(10, 10, 40);
+    text-align: center;
+    color: aliceblue;
+    font-size: 3.5rem;
+    box-shadow: 15px 0px 5px white;
+    font-family:'Open Sans', sans-serif;
+}
+.title{
+    font-size: 3rem;
+    font-weight: bolder;
+    color: rgb(0, 0, 43);
+    text-shadow: 5px 5px 5px white;
+    text-align: center;
+    font-family:'Open Sans', sans-serif;
+    margin-top: 10px;
+    
+}
+.seccion{
+    background-color: white;
+    box-shadow: 5px 2px 15px black;
+    border-radius: 20px;
+    font-family:'Open Sans', sans-serif;
+    padding: 30px;
+    margin: 50px;
+}
+.seccion div ul{
+    list-style-type: none;
+
+    }
+.list{
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.list ul{
+    font-weight: 100;
+}
+.secondTitle{
+    font-size: 2rem;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 0px 5px rgb(10, 0, 56);
+    text-align: center;
+    font-family:'Open Sans', sans-serif;
+    padding-bottom: 5px;
+}
+.titleDiv{
+    font-size: 1rem;
+    color: rgb(77, 75, 96);
+    text-shadow: 5px 5px 5px rgb(255, 255, 255);
+    text-align: justify;
+    font-family:'Open Sans', sans-serif;
+}
+.button{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 100px;
+
+
+
+}
+.button button{
+    color: rgb(49, 1, 94);
+    padding: 5px;
+    margin-top: 15px;
+    
+}
+
+
+
+body footer{
+    background-color: rgb(10, 10, 40);
+    text-align: center;
+    color: aliceblue;
+    font-size: 2rem;    
+}
