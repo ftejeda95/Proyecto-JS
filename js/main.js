@@ -18,6 +18,12 @@ let dolaresTC= "pago de dolares TC"
 let names = prompt("Bienvenido a Banco Random, por favor ingrese su nombre y apellido: ")
 let age = prompt("Por favor ingrese su edad:")
 let sueldo = prompt("cobra su sueldo en Banco macro?: ingrese SI/NO")
+let saludoH6= document.getElementById("presetacion")
+let saludopers = document.createElement("div")
+saludopers.innerHTML= `<div><h5>Bienvenido ${names.toUpperCase()} en esta seccion resolvermos las consultas que desea realizar.</h5></div>`
+saludopers.className = "secondTitlePers"
+saludoH6.appendChild(saludopers)
+
 let helpTransf = "ayuda en transferencia"
 //Definicion de ARRAYS clientes
 const cliente = [{nombre:names,edad:age,ps:sueldo}]
@@ -42,8 +48,13 @@ class TypeClientes{
 const segmentoCliente= new TypeClientes(names,age,sueldo)
 
 segmentoCliente.tipo()
-
+let segmentacion = document.getElementById("presetacion")
+let presentacionSeg = document.createElement("div")
+presentacionSeg.innerHTML = "<div><p> Segun lo informado vamos a segmentar el procedimiento dadas las caracteristicas ingresadas</p><ul><li> Edad: "+ age + "</li><li> Cobra el sueldo: "+ sueldo.toUpperCase() + "</li> <li> Segmento:"+ segmentoCliente.segmento+"</li></ul></div> "
+presentacionSeg.className= "presentacionSeg"
+segmentacion.appendChild(presentacionSeg)
 console.log(segmentoCliente)
+
 
 alert("Hola " + names.toUpperCase() + " te instruiremos en sobre los productos de Banco Random, sin necesidad de que te acerques a la sucursal")
 let td = prompt("Le consultamos: Actualmente posee tarjeta de debito vigente?: SI/NO")
@@ -102,7 +113,7 @@ const validacionConsulta = (help) => {
 }
 // funcion de ciclo en opciones de banca digital
 if(consultaProducto(product)==product2){
-    help = prompt("Favor de indicar otra operacion: Claves(1), Token de Seguridad (2), Transferencias(3), Pagos(4)");
+    help = prompt("Favor de indicar una operacion: Claves(1), Token de Seguridad (2), Transferencias(3), Pagos(4)");
         while (validacionConsulta(help) == false){
             console.log("Accion no disponible, favor ingrese otro");
             help = prompt("Favor de indicar otra operacion: Claves(1), Token de Seguridad (2), Transferencias(3), Pagos(4)");
@@ -220,9 +231,10 @@ if(helpTC == indexTC[0]){
         console.log(denominador+" denominador")
         let cuota = numerador / denominador
         cuota = cuota.toFixed(2)
-        console.log(`usted abonara ${plazo} cuotas de ${cuota}`)
-        alert(`usted abonara ${plazo} cuotas de ${cuota} devolviendo en total ${cuota*plazo}`)
+        console.log(`Usted abonara ${plazo} cuotas de ${cuota}`)
+        alert(`Usted abonara ${plazo} cuotas de ${cuota} devolviendo en total ${cuota*plazo}`)
     }
+
 }
 
 //Desarrollo de INTERESES DE TC
@@ -286,16 +298,92 @@ if (consultaProducto(product)==product4){
 } 
 //Defiinicion de Productos-- simil carrito de compras--
 class Productos{
-    constructor(nombre, calificacion = true, caracteristicas){
+    constructor(nombre, calificacion, caracteristicas){
         this.nombre = nombre;
         this.calificacion = calificacion
         this.caracteristicas = caracteristicas
     }
     }
-const visa = new Productos("VISA","copiar caracteristicas");
-const master = new Productos("MASTER","copiar caracteristicas");
-const amex = new Productos("AMERICAN EXPREX","copiar caracteristicas");
-const prestamoPersonal = new Productos("Prestamo Personal en Pesos","copiar caracteristicas");
-const plazofijoinst = new Productos("Plazo fijo intransferible",false,"copiar caracteristicas");
-const plazofijotrans = new Productos("Plazo fijo transferible",false,"copiar caracteristicas");
-const plazofijoinstUVA = new Productos("Plazo fijo intransferible UVA",false,"copiar caracteristicas");
+const visa = new Productos("VISA",true,"Tarjeta de Credito");
+const master = new Productos("MASTER",true,"Tarjeta de Credito");
+const amex = new Productos("AMERICAN EXPREX",true,"Tarjeta de Credito");
+const prestamoPersonal = new Productos("Prestamo Personal en Pesos",true,"Prestamo personal con destino Consumo Personal");
+const plazofijoinst = new Productos("Plazo fijo intransferible",false,"Plazo Fijo Regulado BCRA");
+const plazofijotrans = new Productos("Plazo fijo transferible",false,"Plazo Fijo Regulado BCRA que puede Endozarse");
+const plazofijoinstUVA = new Productos("Plazo fijo intransferible UVA",false,"Plazo Fijo Valuado en Uvas con Plazo Minimo 90 Dias");
+const bancaInternet= new Productos("Banca Internet/Movil", false, "Ingreso App y Banca Internet");
+const debito = new Productos("Tarjeta de Debito Visa", false, "Tarjeta que permite operar en Banelco y realizar cuenta desde Cuentas")
+
+const categoriaproductos = [visa,master,amex,prestamoPersonal,plazofijoinst,plazofijotrans,plazofijoinstUVA,bancaInternet,debito]
+let catProducto= document.getElementById("productosCarrito")
+for(const producto of categoriaproductos){
+    let div = document.createElement("div");
+    let clasificacion = "definicion de clasificaicon producto"
+    if(producto.calificacion==true){clasificacion = "SI"}else{clasificacion ="NO"}
+    div.innerHTML = `Nombre del Producto: ${producto.nombre}, Necesita Calificacion: ${clasificacion}, Caracteristicas: ${producto.caracteristicas} \n` ;
+    catProducto.appendChild(div);   
+    div.className = "text"
+}
+
+//USO DEL DOM y EVENTO
+function validarFormulario (evt){
+    evt.preventDefault();
+    console.log(evt)
+
+    }   
+//SELECCION DE CLAVES
+const optionHB=["Claves", "Token de Seguridad", "Transferencias", "Pagos"]
+let selectionHB = document.getElementById("hb")
+selectionHB.addEventListener("click",respClickHB)
+    function respClickHB(){
+        let homebanking = document.getElementById("divResp")
+        let intruccionHb = document.createElement("div")
+        intruccionHb.innerHTML = `
+        <form id="formHB">
+        <p>Excelente! lo instruiremos es el Producto BANCA INTERNET, seleccione solo un producto a consultar:</p>
+
+        <label for="Clave">${optionHB[0]}</label>
+        <input type="radio" id="clave" value="Clave" name="Claves"/>
+
+        <label for="Token">${optionHB[1]}</label>
+        <input type="radio" id="Token" value="Token" name="Token de Seguridad"/>
+
+        <label for="Transf">${optionHB[2]}</label>
+        <input type="radio" id="Transf" value="Transf" name="Transferencias"/>
+
+        <label for="Pago">${optionHB[3]}</label>
+        <input type="radio" id="Pago" value="Pago" name="Pagos"/>
+
+        <button type="submit">Confirmar</button>
+        </form>`;
+        homebanking.appendChild(intruccionHb)
+        intruccionHb.className="text"
+        let miFormulario = document.getElementById("formHB");
+        miFormulario.addEventListener("submit", validarFormulario);
+        let valorformHB = miFormulario.value
+        console.log(valorformHB);
+       }
+
+//SELECCION DE TARJETA DE CREDITO
+const optionTC=["Plan V", "Interes por Falta de Pago", "Blanqueo de Pin", "Pago saldo en Dolares"]
+let selectionTC= document.getElementById("tc")
+selectionTC.addEventListener("click",respClickTC)
+    function respClickTC(){
+        let tarjetaCredito = document.getElementById("divResp")
+        let intruccionTC = document.createElement("div")
+        intruccionTC.innerHTML = `
+        <p>Excelente! lo instruiremos es el Producto TARJETA DE CREDITO</p>
+        <form>
+        <label for="productoTC">Seleccione un opcion para continuar:</label>
+            <select id="productoTC" id="productoTC">
+            <option selected></option>
+              <option value="PlanV">${optionTC[0]}</option>
+              <option value="Int">${optionTC[1]}</option>
+              <option value="BlanqueTC"> ${optionTC[2]}</option>
+              <option value="PagoTC">${optionTC[3]}</option>
+            </select>
+        </form>`;
+        intruccionTC.className="text"
+        tarjetaCredito.appendChild(intruccionTC)
+}
+

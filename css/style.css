@@ -52,14 +52,26 @@ body header nav{
     font-family:'Open Sans', sans-serif;
     padding-bottom: 5px;
 }
+.secondTitlePers{
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: rgb(10, 0, 56);
+    text-shadow: 1px 0px 5px rgb(216, 216, 216);
+    text-align: left;
+    font-family:'Open Sans', sans-serif;
+    margin: 15px 0;
+
+}
 .titleDiv{
     font-size: 1rem;
     color: rgb(77, 75, 96);
     text-shadow: 5px 5px 5px rgb(255, 255, 255);
     text-align: justify;
     font-family:'Open Sans', sans-serif;
+    margin: 20px 0px;
+    text-transform: uppercase;
 }
-.button{
+#button{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 100px;
@@ -67,15 +79,32 @@ body header nav{
 
 
 }
-.button button{
+#button button{
     color: rgb(49, 1, 94);
     padding: 5px;
     margin-top: 15px;
     
 }
-
-
-
+.presentacionSeg{
+    text-transform: none;
+    font-weight:900;
+    color:rgb(0, 0, 0) ;
+    font-size: 1rem;
+    font-family:'Open Sans', sans-serif ;
+    text-align: left;
+    margin-top: 20px;
+}
+.presentacionSeg li{
+    list-style-type: circle;
+    text-transform: uppercase;
+    
+}
+.text{
+    color: black;
+    font-size: 1rem;
+    line-height:2.2rem ;
+    font-weight: 600;
+}
 body footer{
     background-color: rgb(10, 10, 40);
     text-align: center;
