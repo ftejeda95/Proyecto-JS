@@ -2,37 +2,62 @@
 las cuales an sido predeterminadas previamente. ademas calcularan montos de pagos de tarjetas por consumos en dolares, se estimara el interes
 por falta de pago de una tarjeta de credito dado los dias y el monto que no hemos abonado y comparar dicho resultado con opciones de financiacion.
 se abarcaran por el momento 4 productos, Tarjeta de Credito, Tarjeta de Debito, Banca Digital e Inversiones.*/
-let product1 = "tarjeta de credito"
-let product2 = "banca digital"
-let product3 = "tarjeta de debito"
-let product4 = "inversiones"
+//DEFINICION DE VARIABLES
+//AYUDA
+
 let help = "Que ayuda necesita"
+let helpTC = "Que consulta tiene sobre el producto Tarjeta de Credito?"
+let helpTransf = "ayuda en transferencia"
+
+//AYUDA DE HOMEBAKING
+
 let clave = "claves"
 let token = "token de seguridad"
 let transferencia = "transferencia de fondos"
 let pagos ="pagos de servicios"
-let planV ="plan v TC"
+
+//AYUDA DE TARJETA DE CREDITO
+
+
 let interesesTC = "intereses generados de TC"
 let blanqueo = "blanqueo de pin TC"
 let dolaresTC= "pago de dolares TC"
-let names = prompt("Bienvenido a Banco Random, por favor ingrese su nombre y apellido: ")
-let age = prompt("Por favor ingrese su edad:")
-let sueldo = prompt("cobra su sueldo en Banco macro?: ingrese SI/NO")
-let saludoH6= document.getElementById("presetacion")
-let saludopers = document.createElement("div")
-saludopers.innerHTML= `<div><h5>Bienvenido ${names.toUpperCase()} en esta seccion resolvermos las consultas que desea realizar.</h5></div>`
-saludopers.className = "secondTitlePers"
-saludoH6.appendChild(saludopers)
 
-let helpTransf = "ayuda en transferencia"
+//PRESENTACION Y SEGMENTACION INPUTS
+
+let names = document.querySelector("#nombre")
+
+let age = document.querySelector("#edad")
+
+let sueldo = document.querySelector("#sueldo")
+
+let td = document.querySelector("#poseeTd")
+
+let formSaludo= document.getElementById("formSaludo");
+formSaludo.addEventListener("submit", validarFormulario);
+formSaludo.addEventListener("submit",function (){
+
+
+//SALUDO PERSONALIZADO
+    let saludoH6= document.getElementById("presetacion")
+    let saludopers = document.createElement("div")
+    saludopers.innerHTML= `<div><h5>Bienvenido ${names.value.toUpperCase()} en esta seccion lo instruiremos en las consultas que desea realizar.</h5></div>`
+    saludopers.className = "secondTitlePers"
+    saludoH6.appendChild(saludopers)
+})
+
 //Definicion de ARRAYS clientes
-const cliente = [{nombre:names,edad:age,ps:sueldo}]
+formSaludo.addEventListener("submit",function (){
+
+const cliente = []
+
 //DEFINICION DE TIPOLOGIA DE CLIENTES//PLAN SUELDO//MERCADO ABIERTO//JOVEN
+
 class TypeClientes{
     constructor(nombre, edad, ps){
-        this.nombre = nombre.toLowerCase();
+        this.nombre = nombre;
         this.edad = Number(edad);
-        this.ps = ps.toLowerCase();
+        this.ps = ps;
         this.segmento = "Plan Sueldo";
     }
     tipo(){
@@ -44,90 +69,74 @@ class TypeClientes{
      } 
 }
 
+const segmentoCliente= new TypeClientes(names.value,age.value,sueldo.value)
+cliente.push(segmentoCliente)
 
-const segmentoCliente= new TypeClientes(names,age,sueldo)
-
-segmentoCliente.tipo()
-let segmentacion = document.getElementById("presetacion")
-let presentacionSeg = document.createElement("div")
-presentacionSeg.innerHTML = "<div><p> Segun lo informado vamos a segmentar el procedimiento dadas las caracteristicas ingresadas</p><ul><li> Edad: "+ age + "</li><li> Cobra el sueldo: "+ sueldo.toUpperCase() + "</li> <li> Segmento:"+ segmentoCliente.segmento+"</li></ul></div> "
-presentacionSeg.className= "presentacionSeg"
-segmentacion.appendChild(presentacionSeg)
-console.log(segmentoCliente)
+//REFLEJO DE SEGMENTACION EN HTML CLIENTE
 
 
-alert("Hola " + names.toUpperCase() + " te instruiremos en sobre los productos de Banco Random, sin necesidad de que te acerques a la sucursal")
-let td = prompt("Le consultamos: Actualmente posee tarjeta de debito vigente?: SI/NO")
-let product = (prompt("Ingrese el numero correspondiente a la consulta del produto:Tarjeta de credito(1), Banca Digital(2), Tarjeta de Debito(3), Inversiones(4)"));
+    segmentoCliente.tipo()
+    let segmentacion = document.getElementById("presetacion")
+    let presentacionSeg = document.createElement("div")
+    presentacionSeg.innerHTML = "<div><p> Segun lo informado vamos a segmentar el procedimiento dadas las caracteristicas ingresadas</p><ul><li> Edad: "+ age.value + "</li><li> Cobra el sueldo: "+ sueldo.value.toUpperCase() + "</li> <li> Segmento:"+ segmentoCliente.segmento+"</li></ul></div> "
+    presentacionSeg.className= "presentacionSeg"
+    segmentacion.appendChild(presentacionSeg)
+    console.log(segmentoCliente)
+    clientes= JSON.stringify(cliente)
+    sessionStorage.setItem("cliente1", clientes)
+    let prueba = sessionStorage.getItem("cliente1")
+    prueba2= JSON.parse(prueba)
+    console.log(prueba2)
+})
+
+//DEFINICION DE PRODUCTOS
+
+const listaProductos=[{id:1, producto:"Tarjeta de Credito"},{id:2, producto:"Banca Internet"},{id:3, producto:"Tarjeta de debito"},{id:4, producto:"Inversiones"}]
+const indexHB=[{id:1, producto:"Claves"},{id:2, producto:"Token de Seguridad "},{id:3, producto:"Transferencias"},{id:4, producto: "Pagos"}]
+const indexTC=[{id:1, producto:"Plan V"},{id:2, producto:"Interes por Falta de Pago"},{id:3, producto:"Blanqueo de Pin"},{id:4, producto: "Pago Saldo en Dolares"}]
+const dolarTC=[{id:1,opcion:"Cotización Dolar"},{id:2,opcion:"Saldo en Dolares Positivo y Pesos en Negativo "},{id:3,opcion:"Excencion de Impuestos"}]
+const planV = [{id:1,opcion:"Instructivo de acceso"},{id:2,opcion:"En que consiste la financiacion?"},{id:3,opcion:"Calculo de interes"}]
+const indices = [listaProductos, indexHB, indexTC, dolarTC,planV]
+
+//COMENCEMOS CON LA PERSONALIZACION-- SE PIDE PRODUCTO
+
+alert("Hola " + names.value.toUpperCase() + " te instruiremos en sobre los productos de Banco Random, sin necesidad de que te acerques a la sucursal")
+let product = (prompt(`Ingrese el numero correspondiente a la consulta del produto: ${listaProductos[0].producto} (1), ${listaProductos[1].producto} (2), ${listaProductos[2].producto} (3),${listaProductos[3].producto} (4)`));
+seleccioneOpcion(listaProductos,product)
 
 
-//Consultamos si la opcion esta dentro de los parametros
-while (product < 1 || product >= 5){
-    alert("El producto indicado no esta disponible, favor ingrese otro");
-    product = Number(prompt("Ingrese el numero correspondiente a la consulta del produto:Tarjeta de credito(1), Banca Digital(2), Tarjeta de Debito(3), Inversiones(4)"));
-    }
-//Que producto Eligio?
-const consultaProducto = (product) =>{ 
-    if(product == 1){
-        return product1
-    }
-    if(product == 2){
-        return product2
-    }
-    if(product == 3){
-        return product3
-    }
-    if(product == 4){
-        return product4
-        
-    }}
-//Dentro del producto banca digital que elegio?
-const consultaAccion = (help) =>{ 
-    if(help == 1){
-        return clave
-    }
-    else if(help == 2){
-        return token
-    }
-    else if(help == 3){
-        return transferencia
-    }
-    else if(help == 4){
-        return pagos
-        
-    }}
-//Eligio bien las opciones?
-const validacionConsulta = (help) => {
+//FUNCION QUE ANALIZA PRODUCTO
 
-    if(consultaAccion(help) == clave)
-        return true
-    else if(consultaAccion(help) == token)
-        return true
-    else if(consultaAccion(help) == transferencia)
-        return true
-    else if(consultaAccion(help) == pagos)
-        return true
-    else{
-        return false
-    }
+function seleccioneOpcion(lista,input) {
+    while(lista.find((pd)=> pd.id == input)==false){
+        console.log("Accion no disponible, favor ingrese otra");
+        input= Number(prompt(`Favor de indicar otra operacion: ${lista.producto[0]}(1), ${lista.producto[1]} (2), ${lista.producto[2]} (3),${lista.producto[3]} (4)`));
+    }return input
 }
-// funcion de ciclo en opciones de banca digital
-if(consultaProducto(product)==product2){
-    help = prompt("Favor de indicar una operacion: Claves(1), Token de Seguridad (2), Transferencias(3), Pagos(4)");
-        while (validacionConsulta(help) == false){
-            console.log("Accion no disponible, favor ingrese otro");
-            help = prompt("Favor de indicar otra operacion: Claves(1), Token de Seguridad (2), Transferencias(3), Pagos(4)");
-        }
-    }
-//Desarrollo de Banca Digital CLAVES 
 
-if(consultaAccion(help) == clave){
+
+// PRIMER FILTRO--SELECCIONOPCION IGUAL A BANCA DIGITAL
+
+if(seleccioneOpcion(listaProductos,product)== 2){
+    alert("Excelente, te instruiremos en el producto" + " " + ((listaProductos[1].producto).toUpperCase()));
+    help = prompt(`Favor de indicar una operacion:  ${indexHB[0].producto} (1), ${indexHB[1].producto} (2), ${indexHB[2].producto} (3),${indexHB[3].producto} (4)`);
+        seleccioneOpcion(indexHB,help)
+
+    }
+
+//Desarrollo de Banca Digital CLAVES 
+function iniciales (input) {
+    key = []
+    frase = input.split(" ")
+    frase.forEach(word=> key.push(word.charAt().toLowerCase()))
+    return key
+} 
+
+if(seleccioneOpcion(indexHB,help)== 1){
         alert("Te indicaremos un ejemplo de clave, sumaremos las primeras letras de cada palabra indicada en la frase");
-        key = []
         let frase = prompt("Ingrese una frase: por ejemplo, me recibi de licenciado en adminitracion en 2019");
-        frase = frase.split(" ")
-        frase.forEach(word=> key.push(word.charAt()))
-        alert("Sumando las primeras letras tendremos que su clve es: "+ " "+ key.join("+").toUpperCase());
+        iniciales(frase)
+        alert("Sumando las primeras letras tendremos que su clve es: "+ key.join("+").toUpperCase());
         alert("Recomendamos que utilices una frase que sea conocida para ti e ingreses solo las primeras letras de las palabras de dicha frase! Suerte!");
     }
 const sinToken= (helpToken) => {
@@ -143,81 +152,84 @@ const sinToken= (helpToken) => {
         }
     
 }
-if(consultaAccion(help)== token){
+if(seleccioneOpcion(indexHB,help)== 2){
     let helpToken= prompt("Favor de determinar: No poseo token (1), Se borra Constantemente(2), No toma lectura de Rostro(3): ")
     sinToken(helpToken)
-
     }
 
 //Desarrollo de Banca Digital TRANSFRENCIAS
-if(consultaAccion(help)==transferencia){
-    helpTransf= prompt("Favor de determinar:Banca Internet(1), Cajero Automatico (2): ")
-    if(helpTransf == 1){
-        if(td.toLowerCase()== "si"){
-            let tokenTransf = prompt("Posee Token Activo?: Si(1), No (2)")
-            if(tokenTransf.toLowerCase() == "si"){
-                alert("Ingrese a Banca Internet en la opcion Transferencias, Via CBU/ALIAS, ingrese ALIAS/CBU, ingrese Monto y Destino, Ingrese Token de Seguridad")
-            }else{
-                sinToken(tokenTransf)
-            }
-        }else{
-            alert("Sin tarjeta de Debitono transferir, favor de acercarse a sucursal.")
+
+//DEFINICION DE FUNCION POSEE TOKEN
+
+const poseeToken = () =>{ 
+    if(td.toLowerCase() == "si"){
+        let tokenTransf = prompt("Posee Token Activo?: Si, No")
+        if(tokenTransf.toLowerCase() == "si")
+            return true
+        else{return sinToken(tokenTransf)
         }
+    }
+    else {
+        alert("Sin tarjeta de Debito VIGENTE no transferir, favor de acercarse a sucursal.")
+    }
+    
+}
+//DEFINICION DE CONDICIONAL PARA OPERAR EN TRANSFERENCIAS
+
+if(seleccioneOpcion(indexHB,help)== 3){
+    helpTransf= prompt("Favor de determinar:Banca Internet(1), Cajero Automatico (2): ")
+    if(helpTransf == "1"){
+        if(poseeToken()==true){
+                alert("Ingrese a Banca Internet en la opcion Transferencias, Via CBU/ALIAS, ingrese ALIAS/CBU, ingrese Monto y Destino, Ingrese Token de Seguridad")
+            }
     }else if(helpTransf.toLowerCase() == "no"){
-        if(td.toLowerCase() == "si"){
-            alert("Ingrese a la opcion transferencias/depositos,transferencia de fondos, tipo de cuenta de donde salen los fondos, CBU destino, verifique titularidad de CBU, concepto, importe y tipo de cuenta destino.")
+        if(td.toLowerCase() == "2"){
+            alert("Ingrese a la opcion: transferencias/depositos,transferencia de fondos, tipo de cuenta de donde salen los fondos, CBU destino, verifique titularidad de CBU, concepto, importe y tipo de cuenta destino.")
         }else{
-            alert("Sin tarjeta de Debito no transferir, favor de acercarse a sucursal.")
+            alert("Sin tarjeta de Debito no podrá transferir, favor de acercarse a la sucursal mas cercana.")
         }}
 }
+
 //Desarrollo de Banca Digital PAGOS
-if(consultaAccion(help)== pagos){
+
+if(seleccioneOpcion(indexHB,help)== 4){
     helpPay = prompt("Favor de determinar: Pagos de Servicios(1), VEP(2), Pagos por Cajero(3): ")
     if(helpPay != 3){
-        if(td.toLowerCase()== "si"){
-            let tokenTransf = prompt("Posee Token Activo?: Si, No")
-            if(tokenTransf.toLowerCase() == "si"){
-                if(helpPay == 1){
-                alert("Ingrese a Banca Internet en la opcion pagos de servicio, nuevo pago, selecciones Rubro, seleccione sub-rubro, ingrese codigo de identificacion")
-                }else if(helpPay == 2){alert("Ingrese a Banca Internet en la opcion pagos de servicio, nuevo pago, selecciones Rubro: AFIP, seleccione sub-rubro: AFIP VEP, ingrese cuit Contribuyente (deudor), ingrese cuit Generado (quien crea VEP), pagar")}
-            }else{
-                sinToken(tokenTransf)
-            }
-        }else{
-            alert("Sin tarjeta de Debito no prodra realizar pagos, favor de acercarse a sucursal.")
+        if(poseeToken()==true){
+            alert("Ingrese a Banca Internet en la opcion pagos de servicio, nuevo pago, selecciones Rubro, seleccione sub-rubro, ingrese codigo de identificacion")
         }
-    }else{
-        if(td.toLowerCase() == "si"){
-            alert("Ingrese a la opcion pagos,seleccione rubro, seleccione codigo de identificacion, seleccione cuenta debito, confirmar.")
+        }else if(helpPay == 2){
+            alert("Ingrese a Banca Internet en la opcion pagos de servicio, nuevo pago, selecciones Rubro: AFIP, seleccione sub-rubro: AFIP VEP, ingrese cuit Contribuyente (deudor), ingrese cuit Generado (quien crea VEP), pagar")
+        
+        }else{
+            if(td.toLowerCase() == "si"){
+                alert("Ingrese a la opcion pagos,seleccione rubro, seleccione codigo de identificacion, seleccione cuenta debito, confirmar.")
+        
         }else{
             alert("Sin tarjeta de Debito no podra pagar servicios, favor de acercarse a sucursal.")
     }}}
 
-//Tarjeta de credito
-indexTC=[1,2,3,4]
+// SEGUNDO FILTRO--SELECCIONOPCION IGUAL A TARJETA DE CREDITO
 
-let helpTC = "que consulta tiene sobre el producto Tarjeta de Credito?"
-if (consultaProducto(product)==product1){
-    alert("Excelente, te instruiremos en el producto" + " " + product1.toUpperCase());
-    let helpTC = Number(prompt("Ingrese sobre que items tiene inconvenientes: Plan V(1), Interes por Falta de Pago(2), Blanqueo de Pin(3), Pago saldo en Dolares(4)"));
-    console.log(indexTC.includes(helpTC))
-    while (indexTC.includes(helpTC)==false){
-    console.log("Accion no disponible, favor ingrese otro");
-    helpTC = Number(prompt("Favor de indicar otra operacion: Plan V(1), Interes por Falta de Pago(2), Blanqueo de Pin(3), Pago saldo en Dolares(4)"));
-    }
+if (seleccioneOpcion(listaProductos,product)==1){
+    alert("Excelente, te instruiremos en el producto" + " " + ((listaProductos[0].producto).toUpperCase()));
+    helpTC = Number(prompt(`Favor de indicar otra operacion: ${indexTC[0].producto} (1), ${indexTC[1].producto} (2), ${indexTC[2].producto} (3),${indexTC[3].producto} (4)`));
+    seleccioneOpcion(indexTC,helpTC)
+}
 
 //Desarrollo de PLAN V
+let helpPlanV = "opciones Plan V"
 
-if(helpTC == indexTC[0]){
-    let helpPlanV= prompt(names+ " seleccionaste la opcion Plan V, cual es tu consulta?: Como acceder?(1), En que consiste la financiacion?(2), Calculo de interes? (3)")
-    if(helpPlanV==1){
+if(seleccioneOpcion(indexTC,helpTC)== 1){
+    helpPlanV= prompt(`${names} seleccionaste la opcion Plan V, cual es tu consulta?:${planV[0].opcion} (1), ${planV[1].opcion} (2),${planV[2].opcion} (3)`)
+    if(seleccioneOpcion(planV,helpPlanV) ==1){
         alert("La opcion de Plan V la otorga visa, podras ver las opciones en tu resumen de TC, debera pagar el minimo del resumen vigente, luego llamar al telefono indicado 0800-222-CUOTAS. La opcion no aparece en tu resumen deberas realizar la consulta en VISAHOME")
     }
-    else if(helpPlanV==2){
+    else if(seleccioneOpcion(planV,helpPlanV) ==2){
         alert("La financiacion a la que usted esta accediendo solo abarca el resumen actual, es decir, usted coutificara el saldo restante al pago minimo por el plazo estipulado")
         alert("CUIDADO: las cuotas faltantes de las compras que figuran en el resumen SEGUIRAN llegando en los proximos resumenes.")
     }
-    else if(helpPlanV==3){
+    else if(seleccioneOpcion(planV,helpPlanV) ==3){
         alert("calcularemos la cuota que abonaria segun el plazo y la deuda total")
         let deuda = Number(prompt("ingrese Saldo Actual del Resumen: "))
         let pagoMinimo = Number(prompt("ingrese Pago Minimo Actual del Resumen: "))
@@ -234,11 +246,11 @@ if(helpTC == indexTC[0]){
         console.log(`Usted abonara ${plazo} cuotas de ${cuota}`)
         alert(`Usted abonara ${plazo} cuotas de ${cuota} devolviendo en total ${cuota*plazo}`)
     }
-
 }
 
 //Desarrollo de INTERESES DE TC
-if(helpTC == indexTC[1]){
+
+if(seleccioneOpcion(indexTC,helpTC)== 2){
     alert("En esta seccion calcularemos los intereses punitorios(falta de pago) de tu resumen de TC")
     let sa = prompt("Ingrese el Saldo Actual del resumen: ")
     let pm = prompt("Ingrese el Pago Minimo del resumen: ")
@@ -254,11 +266,11 @@ if(helpTC == indexTC[1]){
         let intPunitorio = (saldoPunitorio*(diasAtraso)*tna)/365
         alert(`usted abonara ${intPunitorio.toFixed(2)} correspondiente a intereses punitorios`)
     }
-
 }
 
 //Desarrollo de BLANQUEO DE PIN TC
-if(helpTC == indexTC[2]){
+
+if(seleccioneOpcion(indexTC,helpTC)== 3){
     let helpPinTC = prompt("Posee clave Telefonica?: SI(1), NO(2)")
     if(helpPinTC == 1){
         alert("Debe comunicarse al 0810-555-XXXX e ingresar a la opcion Operar con sus Productos y allí solicitar el blanqueo")
@@ -268,35 +280,43 @@ if(helpTC == indexTC[2]){
 }
 
 //Desarrollo de PAGO DE SALDO EN DOLARES
-if(helpTC == indexTC[3]){
-    helpDolarTC= prompt("Favor de indicar cual es su consulta: Cotización Dolar (1), Saldo en Dolares Positivo y Pesos en Negativo (2), Excencion de Impuestos(3): ")
-    if(helpDolarTC == 1){
+
+if(seleccioneOpcion(indexTC,helpTC)== 4){
+    helpDolarTC= prompt(`Favor de indicar cual es su consulta: ${dolarTC[0].opcion} (1), ${dolarTC[1].opcion} (2), ${dolarTC[2].opcion} (3): `)
+    if(seleccioneOpcion(dolarTC,helpDolarTC) == 1){
         let pagoDolar = prompt("Abonara en: Pesos(1), Dolar(2)")
         if(pagoDolar == 1){
             alert("La cotización del Dolar que ustede debe abonar es la oficial, dado que los impuestos son cobrados en el resumen en el que los dolares son consumidos") 
         }else{
             alert("Al abonar en dolares, los impuestos seran descontados al cierre del resumen, por lo que debera abonar el saldo en dolares MAS el saldo en pesos menos los impuestos.")
         }
-    }else if(helpDolarTC==2){
+    }else if(seleccioneOpcion(dolarTC,helpDolarTC) ==2){
         alert("El saldo negativo en pesos significa que usted posee un saldo a Favor, el mismo se ajustara con el saldo a dolares positivo que posee hoy en la Tarjeta de Credito, figura de esta manera dado que la marca realiza la compenzacion al cierre del nuevo resumen.")
-    }else if(helpDolarTC==3){
+    }else if(seleccioneOpcion(dolarTC,helpDolarTC) ==3){
         alert("El unico caso en el que los impuestos no deben ser cobrados, es en aquellos productos que el BCRA a determinado, debera verificar en https://www.afip.gob.ar/impuesto-pais/operaciones-y-sujetos/no-alcanzados.asp y en caso de corresponder, Cargar un Reclamo")
     }
         
 }
-}
+
 //Tarjeta de Debito
-if (consultaProducto(product)==product3){
+
+if (seleccioneOpcion(listaProductos,product)==3){
     alert("Excelente, te instruiremos en el producto" + " " + product3.toUpperCase());
     help = prompt("Ingrese sobre que items tiene inconvenientes: Uso en el exterior(1), Blanqueo de Clave(2), Transferencias(3), Donde esta mi tarjeta(4), Denuncias(5)");
 } 
 
 //Inversiones
-if (consultaProducto(product)==product4){
+
+if (seleccioneOpcion(listaProductos,product)==4){
     alert("Excelente, te instruiremos en el producto" + " " + product4.toUpperCase());
     help = prompt("Ingrese sobre que items tiene inconvenientes: Simulador Plazp Fijo(1), Medio de Creacion(2), Tipos(3), Titulos(4), FCI(5)");
 } 
-//Defiinicion de Productos-- simil carrito de compras--
+
+
+
+
+//DEFINICION DE PRODUCTOS, SIMIL CARRIOT DE COMPRAS.
+
 class Productos{
     constructor(nombre, calificacion, caracteristicas){
         this.nombre = nombre;
@@ -326,36 +346,201 @@ for(const producto of categoriaproductos){
 }
 
 //USO DEL DOM y EVENTO
+
 function validarFormulario (evt){
     evt.preventDefault();
     console.log(evt)
 
     }   
-//SELECCION DE CLAVES
+ 
+function eventPropagation (evt){
+    evt.stopPropagation();
+    console.log(evt)
+    }   
+//SELECCION DE TARJETA DE CREDITO
+function whatProduct(idProducto){
+    if(idProducto == 1){
+        return indexTC
+    }else if(idProducto == 2) {
+        return indexHB
+    }
+}
+function respClick(etiqueta,prodIndex){
+
+    let elemento = document.querySelector(`#${etiqueta}`)
+    let intruccion = document.createElement("div")
+    intruccion.innerHTML = `
+    <p>Excelente! lo instruiremos es el Producto ${listaProductos[prodIndex].producto} </p>
+    <form id="formPers">
+        <label for="optionSelected">Seleccione un opcion para continuar:</label>
+            <select id="optionSelected">
+            <option selected></option>
+              <option id="option1">${whatProduct(listaProductos[prodIndex].id)[0].producto}</option>
+              <option id="option2">${whatProduct(listaProductos[prodIndex].id)[1].producto}</option>
+              <option id="option3">${whatProduct(listaProductos[prodIndex].id)[2].producto}</option>
+              <option id="option4">${whatProduct(listaProductos[prodIndex].id)[3].producto}</option>
+            </select>
+            <button type="submit" id="envio">Confirmar</button>
+    </form>`;
+
+    intruccion.className="text"
+    elemento.appendChild(intruccion)
+    console.log(iniciales(whatProduct(listaProductos[prodIndex].id)[0].producto))
+}  
+console.log(indices[2][0].producto)
+
+let selectionTC= document.querySelector("#tc")
+selectionTC.addEventListener("click", function () { 
+    respClick("divResp",0)
+    let form = document.querySelector("#formPers")
+    form.addEventListener("submit", validarFormulario)
+    let confirmar = document.querySelector("#envio")
+
+    confirmar.addEventListener("click", function() {
+        let valorEleccion = document.querySelector(`#optionSelected`).value
+        console.log(valorEleccion)
+        let planTC = document.querySelector(`#option1`).value
+        let intTC = document.querySelector(`#option2`).value
+        let blanqueo = document.querySelector(`#option3`).value
+        let saldoTC = document.querySelector(`#option4`).value
+        console.log(planTC)
+    
+        if(valorEleccion == planTC){
+            let helpTC= document.querySelector("#envio")
+            helpTC.addEventListener("click", function () {  
+            respClickHelp("divResp",4,0,valorEleccion)
+            return 
+            })
+        }
+        if(valorEleccion == intTC){
+            let helpTC= document.querySelector("#formPers")
+            helpTC.addEventListener("click", function () {  
+            respClickHelp("divResp",2,1)
+            return 
+            })
+        }
+        if(valorEleccion == blanqueo){
+            let helpTC= document.querySelector("#formPers")
+            helpTC.addEventListener("click", function () {  
+            respClickHelp("divResp",2,2)
+            return 
+            })
+        }
+        if(valorEleccion == saldoTC){
+            let helpTC= document.querySelector("#formPers")
+            helpTC.addEventListener("click", function () {  
+            respClickHelp("divResp",2,3)
+            return 
+            })
+        }
+    
+
+        
+    
+
+        
+    })})
+
+
+
+let selectionHB = document.querySelector("#hb")
+selectionHB.addEventListener("click", () => respClick("divResp",1))
+
+function whatOption(idOption){
+    if(idOption == 1){
+        return planV
+    }else if(idOption == 2) {
+        return intTC
+    }else if(idOption == 3) {
+        return blanqueo
+    }else if(idOption == 4) {
+        return dolarTC
+
+}}
+console.log(indices[4].length )
+function respClickHelp(etiqueta,lista,prodIndex,valorEleccion){
+
+    let elemento = document.querySelector(`#${etiqueta}`)
+    let intruccion = document.createElement("div")
+    
+    if(indices[lista].length == 3){
+        intruccion.innerHTML = `
+    <p>Seleccionaste la opcion ${valorEleccion}, cual es tu consulta?</p>
+    <form id="formPers">
+        <label for="help"></label>
+            <select id="help">
+            <option selected></option>
+            
+                <option id="segOpcion1">${whatOption(indices[lista][prodIndex].id)[0].opcion}</option>
+                <option id="segOpcion2">${whatOption(indices[lista][prodIndex].id)[1].opcion}</option>
+                <option id="segOpcion3">${whatOption(indices[lista][prodIndex].id)[2].opcion}</option>
+           
+              
+            </select>
+            <button type="submit" id="formPersOk">Confirmar</button>
+    </form>`}else if(indices[lista].length == 4){
+                intruccion.innerHTML = `
+                <option id="segOpcion1">${whatOption(indices[lista][prodIndex].id)[0].opcion}</option>
+                <option id="segOpcion2">${whatOption(indices[lista][prodIndex].id)[1].opcion}</option>
+                <option id="segOpcion3">${whatOption(indices[lista][prodIndex].id)[2].opcion}</option>
+                <option id="segOpcion4">${whatOption(indices[lista][prodIndex].id)[3].opcion}</option>
+                </select>
+            <button type="submit" id="formPersOk">Confirmar</button>
+    </form>`
+    }
+    //let form = document.querySelector("#formPers")
+    //form.addEventListener("submit", validarFormulario)
+    intruccion.className="text"
+    elemento.appendChild(intruccion)
+} 
+/*
+function respClickTC(){
+
+    let tarjetaCredito = document.getElementById("divResp")
+    let intruccionTC = document.createElement("div")
+    intruccionTC.innerHTML = `
+    <p>Excelente! lo instruiremos es el Producto TARJETA DE CREDITO</p>
+    <form>
+    <label for="productoTC">Seleccione un opcion para continuar:</label>
+        <select id="productoTC" id="productoTC">
+        <option selected></option>
+          <option value="PlanV">${indexTC[0].producto}</option>
+          <option value="Int">${indexTC[1].producto}</option>
+          <option value="BlanqueTC"> ${indexTC[2].producto}</option>
+          <option value="PagoTC">${indexTC[3].producto}</option>
+        </select>
+        <button type="submit" >Confirmar</button>
+    </form>`;
+    
+    intruccionTC.className="text"
+    tarjetaCredito.appendChild(intruccionTC)
+}*/
+ //VER DE HACER UN CLICK DE EL LABEL
+ 
+   /*
+   
 const optionHB=["Claves", "Token de Seguridad", "Transferencias", "Pagos"]
-let selectionHB = document.getElementById("hb")
-selectionHB.addEventListener("click",respClickHB)
-    function respClickHB(){
+   function respClickHB(){
         let homebanking = document.getElementById("divResp")
         let intruccionHb = document.createElement("div")
-        intruccionHb.innerHTML = `
+        intruccionHb.innerHTML = `<div>
         <form id="formHB">
         <p>Excelente! lo instruiremos es el Producto BANCA INTERNET, seleccione solo un producto a consultar:</p>
 
-        <label for="Clave">${optionHB[0]}</label>
+        <label for="Clave">${indexHB[0].producto}</label>
         <input type="radio" id="clave" value="Clave" name="Claves"/>
 
-        <label for="Token">${optionHB[1]}</label>
+        <label for="Token">${indexHB[1].producto}</label>
         <input type="radio" id="Token" value="Token" name="Token de Seguridad"/>
 
-        <label for="Transf">${optionHB[2]}</label>
+        <label for="Transf">${indexHB[2].producto}</label>
         <input type="radio" id="Transf" value="Transf" name="Transferencias"/>
 
-        <label for="Pago">${optionHB[3]}</label>
+        <label for="Pago">${indexHB[3].producto}</label>
         <input type="radio" id="Pago" value="Pago" name="Pagos"/>
 
         <button type="submit">Confirmar</button>
-        </form>`;
+        </form></div>`;
         homebanking.appendChild(intruccionHb)
         intruccionHb.className="text"
         let miFormulario = document.getElementById("formHB");
@@ -363,27 +548,4 @@ selectionHB.addEventListener("click",respClickHB)
         let valorformHB = miFormulario.value
         console.log(valorformHB);
        }
-
-//SELECCION DE TARJETA DE CREDITO
-const optionTC=["Plan V", "Interes por Falta de Pago", "Blanqueo de Pin", "Pago saldo en Dolares"]
-let selectionTC= document.getElementById("tc")
-selectionTC.addEventListener("click",respClickTC)
-    function respClickTC(){
-        let tarjetaCredito = document.getElementById("divResp")
-        let intruccionTC = document.createElement("div")
-        intruccionTC.innerHTML = `
-        <p>Excelente! lo instruiremos es el Producto TARJETA DE CREDITO</p>
-        <form>
-        <label for="productoTC">Seleccione un opcion para continuar:</label>
-            <select id="productoTC" id="productoTC">
-            <option selected></option>
-              <option value="PlanV">${optionTC[0]}</option>
-              <option value="Int">${optionTC[1]}</option>
-              <option value="BlanqueTC"> ${optionTC[2]}</option>
-              <option value="PagoTC">${optionTC[3]}</option>
-            </select>
-        </form>`;
-        intruccionTC.className="text"
-        tarjetaCredito.appendChild(intruccionTC)
-}
-
+*/
