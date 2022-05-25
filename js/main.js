@@ -6,7 +6,6 @@ se abarcaran por el momento 4 productos, Tarjeta de Credito, Tarjeta de Debito, 
 //PRESENTACION Y SEGMENTACION INPUTS
 
 
-
 let names = document.querySelector("#nombre")
 
 let age = document.querySelector("#edad")
@@ -111,12 +110,12 @@ const poseeToken = (create,divCreate) =>{
         divCreate.innerHTML= `<div>
         <form id="formToken">
         <label for="token">¿Posee Token de Seguridad activo?</label>
-            <select id="token">
-            <option selected></option>
+            <select id="token" class="input">
+            <option selected class="input"></option>
                 <option id="posee">SI</option>
                 <option id="noPosee">NO</option>
             </select>
-            <button type="submit" id="envio">Confirmar</button>
+            <button type="submit" class="btn btn-primary">Confirmar</button>
     </form></div>
         `
     divCreate.className="text"
@@ -130,6 +129,7 @@ const poseeToken = (create,divCreate) =>{
             sinTd.className="text"
             respToken.appendChild(sinTd)
       }}
+
 const tokenTransf=()=>{
     respToken=document.querySelector("#formToken")
     respToken.addEventListener("submit",function(e){
@@ -162,7 +162,7 @@ const sinToken= (helpToken,valor1,valor2,valor3,create,divCreate) => {
     if(td.value == "SI"){
         if(helpToken == valor1 || helpToken == valor3){
             divCreate.innerHTML= `<div>
-            <p>Deberá crear su Token de Seguridad, para ello ingrese al cajero automatico con su Tarjeta de Debito en las siguientes Opciones:Claves,Generacion de claves, Token de Seguridad, tipo documento, Numero de Documento, Clave 6 digitos</p>
+            <p>Debera crear su Token de Seguridad, para ello ingrese al cajero automatico con su Tarjeta de Debito en las siguientes Opciones:Claves,Generacion de claves, Token de Seguridad, tipo documento, Numero de Documento, Clave 6 digitos</p>
             <p>El cajero emitira Ticket con codigo de activacion, debera ingresarlo en la APP sin necesidad de ingresar el usario en la opcion Token de Seguridad.</p>
             </div> `
         divCreate.className="text"
@@ -207,19 +207,20 @@ function respClick(etiqueta,prodIndex){
     <p>Excelente! lo instruiremos es el Producto ${listaProductos[prodIndex].producto} </p>
     <form id="formPers">
         <label for="optionSelected">Seleccione un opcion para continuar:</label>
-            <select id="optionSelected">
+            <select id="optionSelected" class="input">
             <option selected></option>
               <option id="${((whatProduct(listaProductos[prodIndex].id)[0].producto).split(" ")).join("_").toLowerCase()}">${whatProduct(listaProductos[prodIndex].id)[0].producto}</option>
               <option id="${((whatProduct(listaProductos[prodIndex].id)[1].producto).split(" ")).join("_").toLowerCase()}">${whatProduct(listaProductos[prodIndex].id)[1].producto}</option>
               <option id="${((whatProduct(listaProductos[prodIndex].id)[2].producto).split(" ")).join("_").toLowerCase()}">${whatProduct(listaProductos[prodIndex].id)[2].producto}</option>
               <option id="${((whatProduct(listaProductos[prodIndex].id)[3].producto).split(" ")).join("_").toLowerCase()}">${whatProduct(listaProductos[prodIndex].id)[3].producto}</option>
             </select>
-            <button type="submit" id="envio">Confirmar</button>
+            <button type="submit" class="btn btn-primary">Confirmar</button>
     </form>`;
     intruccion.className="text"
     elemento.appendChild(intruccion)
     
 } 
+
 //FUNCION PARA DETERMINAR QUE LISTA SELECCIONAR
 function whatOption(idOption,productoSelec){
 
@@ -253,35 +254,35 @@ function respClickHelp(etiqueta,lista,prodIndex,valorEleccion,productoSelec){
     //la funcion whatoption seleciona el producto de la lista index, luego selecciono la opcion de ese producto, y me trae el id, de acuerdo al producto me trae la opcion correspondiente, ejemplo de indices seleciono indextc, busca numero de opcion[0] plan v, saca el id, como el id es 1 trae lista de plan v, con la opcion 0 que es es que consiste.
     `<form id="formPers2">
         <label for="help">Dentro de la seccion ${productoSelec} opto por la opcion ${valorEleccion}, cual es tu consulta?</label>
-            <select id="help">
+            <select id="help" class="input">
             <option selected></option>
                 <option id="${((whatOption(indices[lista][prodIndex].id,productoSelec)[0]).opcion.split(" ")).join("_").toLowerCase()}">${(whatOption(indices[lista][prodIndex].id,productoSelec)[0]).opcion}</option>
                 <option id="${((whatOption(indices[lista][prodIndex].id,productoSelec)[1]).opcion.split(" ")).join("_").toLowerCase()}">${(whatOption(indices[lista][prodIndex].id,productoSelec)[1]).opcion}</option>
             </select>
-            <button type="submit" id="envio">Confirmar</button>
+            <button type="submit" class="btn btn-primary">Confirmar</button>
     </form>`}else if(whatOption(indices[lista][prodIndex].id,productoSelec).length == 3){
         nuevo.innerHTML = `
     <form id="formPers2">
         <label for="help">Dentro de la seccion ${productoSelec} opto por la opcion ${valorEleccion}, cual es tu consulta?</label>
-            <select id="help">
+            <select id="help" class="input">
             <option selected></option>
                 <option id="${((whatOption(indices[lista][prodIndex].id,productoSelec)[0]).opcion.split(" ")).join("_").toLowerCase()}">${whatOption(indices[lista][prodIndex].id,productoSelec)[0].opcion}</option>
                 <option id="${((whatOption(indices[lista][prodIndex].id,productoSelec)[1]).opcion.split(" ")).join("_").toLowerCase()}">${whatOption(indices[lista][prodIndex].id,productoSelec)[1].opcion}</option>
                 <option id="${((whatOption(indices[lista][prodIndex].id,productoSelec)[2]).opcion.split(" ")).join("_").toLowerCase()}">${whatOption(indices[lista][prodIndex].id,productoSelec)[2].opcion}</option>
             </select>
-            <button type="submit" id="envio">Confirmar</button>
+            <button type="submit" class="btn btn-primary">Confirmar</button>
     </form>`}else if(whatOption(indices[lista][prodIndex].id,productoSelec).length== 4){
                 nuevo.innerHTML = `
     <form id="formPers2">
         <label for="help">Dentro de la seccion ${productoSelec} opto por la opcion ${valorEleccion}, cual es tu consulta?</label>
-            <select id="help">
+            <select id="help"class="input">
             <option selected></option>
                 <option id="${((whatOption(indices[lista][prodIndex].id,productoSelec)[0]).opcion.split(" ")).join("_").toLowerCase()}">${whatOption(indices[lista][prodIndex].id,productoSelec)[0].opcion}</option>
                 <option id="${((whatOption(indices[lista][prodIndex].id,productoSelec)[1]).opcion.split(" ")).join("_").toLowerCase()}">${whatOption(indices[lista][prodIndex].id,productoSelec)[1].opcion}</option>
                 <option id="${((whatOption(indices[lista][prodIndex].id,productoSelec)[2]).opcion.split(" ")).join("_").toLowerCase()}">${whatOption(indices[lista][prodIndex].id,productoSelec)[2].opcion}</option>
                 <option id="${((whatOption(indices[lista][prodIndex].id,productoSelec)[3]).opcion.split(" ")).join("_").toLowerCase()}">${whatOption(indices[lista][prodIndex].id,productoSelec)[3].opcion}</option>
                 </select>
-            <button type="submit" id="envio">Confirmar</button>
+            <button type="submit" class="btn btn-primary">Confirmar</button>
     </form>`
     }
     nuevo.className="text"
@@ -292,7 +293,42 @@ function html(create,input,html){
     input.className= "text"
     return create.appendChild(input)
 }
+//DEFINIR UN STRING VACIO
+const error=()=>{
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Por Favor verifique, un campo requerido no fue completado.',
+        footer: '<a href="">Why do I have this issue?</a>'
+      })
+   
+}
+//FUNCION PARA TARJETAS
+const crearTarjeta = (arrays)=>{
 
+    let catProducto= document.getElementById("productosCarrito")
+    catProducto.className += "container-fluid row my-5 mx-0 p-0"
+    let clasificacion = "definicion de clasificaicon producto"
+    let n =0
+    for(const producto of arrays){
+        n+=1
+        let div = document.createElement("div");
+        producto.calificacion==true?clasificacion = "SI" :clasificacion ="NO"
+        div.innerHTML = `
+        <div class="card" style="width: 18rem;">
+            <img src="/assets/${n}.png" class="card-img-top" alt="${producto.nombre}" width=180px height=230px id=img>
+            <div class="card-body">
+                <h5 class="card-title">${producto.nombre}</h5>
+                <p class="card-text"> Necesita Calificacion: ${clasificacion} \n</p>
+                <p class="card-text"> Caracteristicas: ${producto.caracteristicas}</p>
+                <button class="btn btn-dark">Contratar</button>
+            </div>
+        </div>`
+        div.classList="col-4 m-0 text-center p-2"
+        catProducto.appendChild(div);  
+        
+    }
+}
 //DEFINICION DE PRODUCTOS, SIMIL CARRIOT DE COMPRAS.
 
 class Productos{
@@ -310,18 +346,20 @@ const plazofijoinst = new Productos("Plazo fijo intransferible",false,"Plazo Fij
 const plazofijotrans = new Productos("Plazo fijo transferible",false,"Plazo Fijo Regulado BCRA que puede Endozarse");
 const plazofijoinstUVA = new Productos("Plazo fijo intransferible UVA",false,"Plazo Fijo Valuado en Uvas con Plazo Minimo 90 Dias");
 const bancaInternet= new Productos("Banca Internet/Movil", false, "Ingreso App y Banca Internet");
-const debito = new Productos("Tarjeta de Debito Visa", false, "Tarjeta que permite operar en Banelco y realizar cuenta desde Cuentas")
-
+const debito = new Productos("Tarjeta de Debito Visa", false, "Tarjeta que permite operar en con su cuenta bancaria")
 const categoriaproductos = [visa,master,amex,prestamoPersonal,plazofijoinst,plazofijotrans,plazofijoinstUVA,bancaInternet,debito]
 let catProducto= document.getElementById("productosCarrito")
+let div = document.createElement("div");
+crearTarjeta(categoriaproductos)
+/*
 for(const producto of categoriaproductos){
-    let div = document.createElement("div");
+    
     let clasificacion = "definicion de clasificaicon producto"
-    if(producto.calificacion==true){clasificacion = "SI"}else{clasificacion ="NO"}
+    producto.calificacion==true?clasificacion = "SI" :clasificacion ="NO"
     div.innerHTML = `Nombre del Producto: ${producto.nombre}, Necesita Calificacion: ${clasificacion}, Caracteristicas: ${producto.caracteristicas} \n` ;
     catProducto.appendChild(div);   
     div.className = "text"
-}
+}*/
 
 
 let selectionTC= document.querySelector("#tc")
@@ -371,12 +409,12 @@ selectionTC.addEventListener("click", function () {
 
                             <form id="interesTC" >
                                 <label for="deuda">ingrese Saldo Actual del Resumen:</label>
-                                    <input type="text" id="deuda"><br>
+                                    <input type="text" id="deuda" class="input"><br>
                                 <label for="pagoMinimo">ingrese Pago Minimo Actual del Resumen: </label>
-                                    <input type="text" id="pagoMinimo"><br>
+                                    <input type="text" id="pagoMinimo" class="input"><br>
                                 <label for="plazo">ingrese Plazo de financiacion: </label>
-                                    <input type="text" id="plazo"><br>
-                            <button type="submit" >Confirmar</button>
+                                    <input type="text" id="plazo" class="input"><br>
+                            <button type="submit" class="btn btn-primary">Confirmar</button>
                             </form></div>
                             `;
                             html(createTC,inputTC,innerHTMLTC)
@@ -389,6 +427,9 @@ selectionTC.addEventListener("click", function () {
                                 let deuda = document.querySelector("#deuda").value
                                 let pagoMinimo = document.querySelector("#pagoMinimo").value
                                 let plazo = document.querySelector("#plazo").value
+                                if(deuda==""||pagoMinimo==""||plazo==""){
+                                    error()
+                                }
                                 let tasa = ((0.51/plazo))
                                 console.log(tasa)
                                 let saldoAdeudado = (deuda-pagoMinimo);
@@ -424,16 +465,16 @@ selectionTC.addEventListener("click", function () {
                             <p>En esta seccion calcularemos los intereses punitorios(falta de pago) de tu resumen de TC</p>
                             <form id="interesTCMora" >
                                 <label for="sa">Ingrese el Saldo Actual del resumen:</label>
-                                    <input type="text" id="sa"><br>
+                                    <input type="text" id="sa" class="input" placeholder="Importe en Pesos($)"><br>
                                 <label for="pm">Ingrese el Pago Minimo del resumen:</label>
-                                    <input type="text" id="pm"><br>
+                                    <input type="text" id="pm" class="input"  placeholder="Importe en Pesos($)"><br>
                                 <label for="pago">Ingrese pago realizado: </label>
-                                    <input type="text" id="pago"><br>
+                                    <input type="text" id="pago" class="input"  placeholder="Importe en Pesos($)"><br>
                                 <label for="fechaPago">Ingrese fecha de pago:</label>
-                                    <input type="date" id="fechaPago"><br>   
+                                    <input type="date" id="fechaPago" class="input"><br>   
                                 <label for="fechaVenc">Ingrese fecha de Vencimiento del Resumen:</label>
-                                    <input type="date" id="fechaVenc"><br>
-                                <button type="submit" >Confirmar</button>
+                                    <input type="date" id="fechaVenc" class="input"><br>
+                                <button type="submit" class="btn btn-primary" >Confirmar</button>
                             </form>
                             </div>`
                             html(createTC,inputTC,innerHTMLMora)
@@ -446,6 +487,9 @@ selectionTC.addEventListener("click", function () {
                             let pago= document.querySelector("#pago").value
                             let fechaPagoInput = document.querySelector("#fechaPago").value
                             let fechaVencInput = document.querySelector("#fechaVenc").value
+                            if(sa==""||pm==""||pago==""||fechaPagoInput==""||fechaVencInput==""){
+                                error()
+                            }
                             let fechaPagoLuxon=DateTime.fromISO(fechaPagoInput)  
                             let fechaVencLuxon =DateTime.fromISO(fechaVencInput)
                             console.log(fechaPagoLuxon.month)
@@ -484,12 +528,12 @@ selectionTC.addEventListener("click", function () {
                         innerHTMLBlanqueo=`<div>
                         <form id="blanqueoTC">
                         <label for="blanqueo">Posee clave Telefonica?: </label>
-                            <select id="blanqueo">
+                            <select id="blanqueo" class="input">
                             <option selected></option>
                                 <option id="poseeClave">SI</option>
                                 <option id="noPoseeClave">NO</option>
                             </select>
-                            <button type="submit">Confirmar</button>
+                            <button type="submit" class="btn btn-primary">Confirmar</button>
                         </form>
                         </div> `   
                         html(createBlanqueoTC,inputBlanqueoTC,innerHTMLBlanqueo)
@@ -535,12 +579,12 @@ selectionTC.addEventListener("click", function () {
                             innerhtmlDolar=`<div>
                             <form id="dolarTC">
                             <label for="dolar">Abonara en:</label>
-                                <select id="dolar">
+                                <select id="dolar" class="input">
                                 <option selected></option>
                                     <option id="abonaPesos">Pesos</option>
                                     <option id="abonaDolar">Dolar</option>
                                 </select>
-                                <button type="submit">Confirmar</button>
+                                <button type="submit" class="btn btn-primary">Confirmar</button>
                             </form>
                             </div> `  
                             html(createDolarTC,inputDolarTC,innerhtmlDolar)
@@ -554,6 +598,7 @@ selectionTC.addEventListener("click", function () {
                                 inputDolarTC2=document.createElement("div")
                                 let valorAbono=document.querySelector("#dolar").value
                                 let abonaPesos = document.querySelector("#abonaPesos").value
+                                
                             if(valorAbono == abonaPesos){
                                 innerHTMLPesos=`La cotización del Dolar que ustede debe abonar es la oficial, dado que los impuestos son cobrados en el resumen en el que los dolares son consumidos`
                                 html(createDolarTC2,inputDolarTC2,innerHTMLPesos)
@@ -599,21 +644,18 @@ selectionHB.addEventListener("click", function () {
                     let valorEleccionClave= document.querySelector(`#help`).value
                     let helpClaveConsejo =  document.querySelector(`#${((whatOption(indices[1][0].id,"Banca Internet")[0]).opcion.split(" ")).join("_").toLowerCase()}`).value
                     let helpClaveGeneracion = document.querySelector(`#${((whatOption(indices[1][0].id,"Banca Internet")[1]).opcion.split(" ")).join("_").toLowerCase()}`).value
-                    console.log(valorEleccionClave)
-                    console.log(helpClaveGeneracion)
+                    //CREO DIVS DE RESPUESTA
                     let key = document.querySelector("#divResp")
                     let inputClave = document.createElement("div")
                     if(valorEleccionClave == helpClaveConsejo){
  
-                        inputClave.innerHTML = `<div><p>Las claves a ingresar deben tener minimas medidas de seguridad, haremos un ejemplo de clave.</p>
+                        let innerHTMLTKeyConsejo = `<div><p>Las claves a ingresar deben tener minimas medidas de seguridad, haremos un ejemplo de clave.</p>
                         <form id="frase" >
                         <label for="ejFrase"> Por Favor, Ingrese una frase: por ejemplo, me recibi de licenciado en adminitracion en 2019: </label>
                         <input type="text" id="ejFrase">
-                        <button type="submit" >Confirmar</button>
+                        <button type="submit" class="btn btn-primary" >Confirmar</button>
                         </form></div>`
-                                                
-                        inputClave.className="text"
-                        key.appendChild(inputClave)
+                        html(key,inputClave,innerHTMLTKeyConsejo)                       
 
                         let fraseEj = document.querySelector("#frase")
                         fraseEj.addEventListener("submit",function(e){
@@ -621,23 +663,22 @@ selectionHB.addEventListener("click", function () {
                             console.log(e)
                             let valueFrase = document.querySelector("#ejFrase").value
                             console.log(valueFrase)
-                            
+                            if(valueFrase==""){
+                                error()
+                            }
                         let respuesta = document.querySelector("#divResp")
                         let  respConsejo = document.createElement("div")
-                        respConsejo.innerHTML=
-                        `                      
-                        <p>Sumaremos las primeras letras tendremos que su clave: ${iniciales(valueFrase).join(" + ").toUpperCase()}</p>
-                        <p>Recomendamos que utilices una frase que sea conocida para ti e ingreses solo las primeras letras de las palabras de dicha frase! Suerte!</p>
-                
-                        `
-                        respConsejo.className="text"
-                        respuesta .appendChild(respConsejo)
+                        let innerHTMLTCosnejo=
+                        `<p>Sumaremos las primeras letras tendremos que su clave: ${iniciales(valueFrase).join(" + ").toUpperCase()}</p>
+                        <p>Recomendamos que utilices una frase que sea conocida para ti e ingreses solo las primeras letras de las palabras de dicha frase! Suerte!</p>`
+                        html(respuesta,respConsejo,innerHTMLTCosnejo)
+
                         })
 
                     }else if(valorEleccionClave == helpClaveGeneracion){
                         consejo = document.querySelector("#divResp")
                         inputClave = document.createElement("div")
-                        inputClave.innerHTML =`<div>
+                        let innerHTMLTKey =`<div>
                             <ul>
                                 <li>1-Dirigite a un Cajero Automático de la Red Banelco, de lunes a viernes de 07:00 a 20:00 hs. </li>
                                 <li>2-Ingresá tu Tarjeta de Débito y en el menú seleccioná Claves> Generación de clave> Banca Móvil/Internet. </li>
@@ -650,8 +691,8 @@ selectionHB.addEventListener("click", function () {
                                 <li>9-Cree su usuario y clave.</li>
                             </ul>
                         </div>`
-                        inputClave.className="list"
-                        key.appendChild(inputClave)
+                        html(key,inputClave,innerHTMLTKey)
+
                     }
                         
                 })
@@ -663,6 +704,7 @@ selectionHB.addEventListener("click", function () {
             let helpToken= document.querySelector("#formPers")
             helpToken.addEventListener("submit", function () {  
             respClickHelp("divResp",1,1,valorEleccionHB,"Banca Internet")
+            //CAPTURO VALORES DE RESPUESTA
             let helpToken_2 = document.querySelector("#formPers2")
             helpToken_2 .addEventListener("submit",function(e){
                 e.preventDefault()
@@ -671,8 +713,7 @@ selectionHB.addEventListener("click", function () {
                 let helpSinToken=  document.querySelector(`#${((whatOption(indices[1][1].id,"Banca Internet")[0]).opcion.split(" ")).join("_").toLowerCase()}`).value
                 let helpTokenBorrar= document.querySelector(`#${((whatOption(indices[1][1].id,"Banca Internet")[1]).opcion.split(" ")).join("_").toLowerCase()}`).value
                 let helpTokenRostro = document.querySelector(`#${((whatOption(indices[1][1].id,"Banca Internet")[2]).opcion.split(" ")).join("_").toLowerCase()}`).value
-                console.log(valorEleccionToken)
-                console.log(helpTokenBorrar)
+                //CREO DIVS DE RESPUESTA
                 let createtoken = document.querySelector("#divResp")
                 let inputToken = document.createElement("div")
                 sinToken(valorEleccionToken,helpSinToken,helpTokenBorrar,helpTokenRostro,createtoken,inputToken)
@@ -683,6 +724,7 @@ selectionHB.addEventListener("click", function () {
             let helpTransf= document.querySelector("#formPers")
             helpTransf.addEventListener("click", function () {  
             respClickHelp("divResp",1,2,valorEleccionHB,"Banca Internet")
+            //IMPRIMO VALORES DE RESPUESTA
             let helpTransf_2 = document.querySelector("#formPers2")
             helpTransf_2 .addEventListener("submit",function(e){
                 e.preventDefault()
@@ -690,25 +732,25 @@ selectionHB.addEventListener("click", function () {
                 let valorEleccionTransf= document.querySelector(`#help`).value
                 let helpBI=  document.querySelector(`#${((whatOption(indices[1][2].id,"Banca Internet")[0]).opcion.split(" ")).join("_").toLowerCase()}`).value
                 let helpBanelco= document.querySelector(`#${((whatOption(indices[1][2].id,"Banca Internet")[1]).opcion.split(" ")).join("_").toLowerCase()}`).value
-                console.log(valorEleccionTransf)
-                console.log(helpBI)
+                //CREO DIVS DE RESPUESTA
                 let createTrans = document.querySelector("#divResp")
                 let inputTransf = document.createElement("div")
                 if(valorEleccionTransf==helpBI){
+                    //POSEE TOKEND E SEGURIDAD??
                     poseeToken(createTrans,inputTransf)
                     tokenTransf()
                 }else if(valorEleccionTransf==helpBanelco){
                     if(td.value == "SI"){
-                        inputTransf.innerHTML=`<div>
+                        let innerHTMLTrans=`<div>
                         <p>Ingrese su tarjeta de debito al cajero, luego seleccione a la opcion: transferencias/depositos,transferencia de fondos, tipo de cuenta de donde salen los fondos, CBU destino, verifique titularidad de CBU, concepto, importe y tipo de cuenta destino.</p>
                         </div>`
-                        inputTransf.className="text"
-                        createTrans.appendChild(inputTransf)
-                    }else{ inputTransf.innerHTML=`<div>
+                        html(createTrans,inputTransf,innerHTMLTrans)
+                    }else{ 
+                        let innerHTMLTrans=`<div>
                         <p>Sin tarjeta de Debito no podrá transferir, favor de acercarse a la sucursal mas cercana.</p>
                         </div>`
-                        inputTransf.className="text"
-                        createTrans.appendChild(inputTransf)
+                        html(createTrans,inputTransf,innerHTMLTrans)
+
                 }}
         })})}
         //SELECCIONE PAGO DE SERVICIOS
@@ -716,6 +758,7 @@ selectionHB.addEventListener("click", function () {
             let helpPago= document.querySelector("#formPers")
             helpPago.addEventListener("click", function () {  
             respClickHelp("divResp",1,3,valorEleccionHB,"Banca Internet")
+            //SACO VALORES DE RESPUESTA
             let helpPago_2 = document.querySelector("#formPers2")
             helpPago_2 .addEventListener("submit",function(e){
                 e.preventDefault()
@@ -724,64 +767,67 @@ selectionHB.addEventListener("click", function () {
                 let helpPagoServ=  document.querySelector(`#${((whatOption(indices[1][3].id,"Banca Internet")[0]).opcion.split(" ")).join("_").toLowerCase()}`).value
                 let helpPavoVEP= document.querySelector(`#${((whatOption(indices[1][3].id,"Banca Internet")[1]).opcion.split(" ")).join("_").toLowerCase()}`).value
                 let helpPagoBanelco = document.querySelector(`#${((whatOption(indices[1][3].id,"Banca Internet")[2]).opcion.split(" ")).join("_").toLowerCase()}`).value
-
-                console.log(valorEleccionPago)
-                console.log(helpPagoServ)
+                //CREO LOS DIVS PARA RESPUESTA
                 let createPago = document.querySelector("#divResp")
                 let inputPago = document.createElement("div")
                 if(td.value == "SI"){
+                    //POSEE TOKEN DE SEGURIDAD??
                     poseeToken(createPago,inputPago)
-                    
+                    //SACO VALORES DE RESPUESTA TOKEN
                     respToken=document.querySelector("#formToken")
                     respToken.addEventListener("submit",function(e){
                         respPoseeToken=document.querySelector("#divResp")
                         e.preventDefault(e)
                         console.log(e)
                         let valorToken =document.querySelector("#token").value
-                        console.log(valorToken)
                         let posee = document.querySelector("#posee").value
                         let noPosee = document.querySelector("#noPosee").value
                         if(valorToken==posee){
                             let createPagoResp = document.querySelector("#divResp")
                             let inputPagoResp =document.createElement("div")
                             if(valorEleccionPago==helpPagoServ){
-                                inputPagoResp.innerHTML=`<div>
+                                innerHTMLPagoResp=`<div>
                                     <p>Ingrese a Banca Internet en la opcion pagos de servicio, nuevo pago, selecciones Rubro, seleccione sub-rubro, ingrese codigo de identificacion</p>
                                     </div>`
-                                inputPagoResp.className="text"
-                                createPagoResp.appendChild(inputPagoResp)   
+                                html(createPagoResp,inputPagoResp,innerHTMLPagoResp)
                             }else if(valorEleccionPago==helpPavoVEP){
-                                inputPagoResp.innerHTML=`<div>
+                                innerHTMLPagoResp=`<div>
                                 <p>Ingrese a Banca Internet en la opcion pagos de servicio, nuevo pago, selecciones Rubro: AFIP, seleccione sub-rubro: AFIP VEP, ingrese cuit Contribuyente (deudor), ingrese cuit Generado (quien crea VEP), pagar.</p>
                                 </div>`
-                                inputPagoResp.className="text"
-                                createPagoResp.appendChild(inputPagoResp)  
+                                html(createPagoResp,inputPagoResp,innerHTMLPagoResp)
                             }else if(valorEleccionPago==helpPagoBanelco){
-                                inputPagoResp.innerHTML=`<div>
+                                innerHTMLPagoResp=`<div>
                                 <p>Ingrese a la opcion pagos,seleccione rubro, seleccione codigo de identificacion, seleccione cuenta debito, confirmar.</p>
                                 </div>`
-                                inputPagoResp.className="text"
-                                createPagoResp.appendChild(inputPagoResp)  
+                                html(createPagoResp,inputPagoResp,innerHTMLPagoResp)
+
                             }
                         }
                         else if(valorToken==noPosee){
                             let createPagoResp = document.querySelector("#divResp")
                             let inputPagoResp =document.createElement("div")
-                            inputPagoResp.innerHTML= `<div>
+                            innerHTMLPagoResp= `<div>
                             <p>Deberá crear su Token de Seguridad, para ello ingrese al cajero automatico con su Tarjeta de Debito en las siguientes Opciones:Claves,Generacion de claves, Token de Seguridad, tipo documento, Numero de Documento, Clave 6 digitos</p>
                             <p>El cajero emitira Ticket con codigo de activacion, debera ingresarlo en la APP sin necesidad de ingresar el usario en la opcion Token de Seguridad.</p>
                             </div> `
-                        inputPagoResp.className="text"
-                        createPagoResp.appendChild(inputPagoResp)
+                            html(createPagoResp,inputPagoResp,innerHTMLPagoResp)
                         }
                 })}else{ 
-                    inputPago.innerHTML=`<div>
+                    innerHTMLPagoSinToken=`<div>
                         <p>Sin tarjeta de Debito no podrá transferir, favor de acercarse a la sucursal mas cercana.</p>
                         </div>`
-                    inputPago.className="text"
-                    createPago.appendChild(inputPago)}
+                        html(createPago,input,innerHTMLPagoSinToken)}
+
             })})}
         })})
 
+        let inputClass= document.getElementsByTagName("input")
+        for(var i = 0; i < inputClass.length; i+=1)
+            inputClass[i].className += "input";
+        let inputClassOption= document.getElementsByTagName("select")
+        for(var i = 0; i < inputClassOption.length; i+=1)
+        inputClassOption[i].className += "input";   
 
+
+        
            
