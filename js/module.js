@@ -5,8 +5,7 @@ export {listaProductos, indexHB, indexTC, dolarTC, planV, opcClaves, opcTransf, 
 
 //LIBRERIA
 const DateTime = luxon.DateTime
-let tieneTD=JSON.parse(localStorage.getItem("poseeTD")).poseeTD
-console.log(tieneTD)
+
 //DEFINICION DE PRODUCTOS
 const listaProductos=[{id:1, producto:"Tarjeta de Credito"},{id:2, producto:"Banca Internet"},{id:3, producto:"Tarjeta de debito"},{id:4, producto:"Inversiones"}]
 const indexHB=[{id:1, producto:"Claves"},{id:2, producto:"Token de Seguridad"},{id:3, producto:"Transferencias"},{id:4, producto: "Pagos"}]
@@ -30,7 +29,7 @@ function iniciales (input) {
 //DEFINICION DE FUNCION POSEE TOKEN
 
 const poseeToken = (create,divCreate) =>{ 
-
+    let tieneTD=JSON.parse(localStorage.getItem("poseeTD")).poseeTD
     if(tieneTD == "SI"){
         divCreate.innerHTML= `<div>
         <form id="formToken">
@@ -87,6 +86,7 @@ const tokenTransf=()=>{
         }})}
 //DEFINICION DE FUNCION NO POSEE TOKEN
 const sinToken= (helpToken,valor1,valor2,valor3,create,divCreate) => {
+    let tieneTD=JSON.parse(localStorage.getItem("poseeTD")).poseeTD
     if(tieneTD== "SI"){
         if(helpToken == valor1 || helpToken == valor3){
             divCreate.innerHTML= `<div>
@@ -684,6 +684,7 @@ function hb(selectionHB,selectionTC){
             // SELECCIONO TRANSFERENCIAS DE FONDOS
     
             else if(valorEleccionHB == transf){
+                let tieneTD=JSON.parse(localStorage.getItem("poseeTD")).poseeTD
                 let helpTransf= document.querySelector("#formPers")
                 helpTransf.addEventListener("click", function () {  
                 bottonProd.disabled=true

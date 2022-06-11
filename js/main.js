@@ -5,8 +5,8 @@ se abarcaran por el momento 4 productos, Tarjeta de Credito, Tarjeta de Debito, 
 
 //PRESENTACION Y SEGMENTACION INPUTS
 
-import {iniciales,poseeToken,tokenTransf,sinToken,validarFormulario,whatOption,whatProduct,respClick,respClickHelp,html,error,crearTarjeta,repeatEvent,hb,tc} from "./module.js"
-//import {listaProductos, indexHB, indexTC, dolarTC, planV, opcClaves, opcTransf, opcToken, opcPago,indices} from "./module.js"
+import {iniciales,poseeToken,tokenTransf,sinToken,validarFormulario,whatOption,whatProduct,respClick,respClickHelp,html,error,crearTarjeta,repeatEvent,hb,tc,DateTime,crearSeguro,enviarSolicitud,borrarSimulacion,TNA,determinarCuota,sumaFecha} from "./module.js"
+import {listaProductos, indexHB, indexTC, dolarTC, planV, opcClaves, opcTransf, opcToken, opcPago,indices} from "./module.js"
 
 let names = document.querySelector("#nombre")
 
