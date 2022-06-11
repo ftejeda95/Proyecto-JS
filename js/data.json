@@ -1,0 +1,26 @@
+
+
+{   "listaProduct":
+        [{"nombre": "VISA", "clasificacion": "Bajo calificacion crediticia", "id": 1, "caracteristicas":"Tarjeta de Credito","img": "../assets/1.png" },
+        {"nombre": "MASTER", "clasificacion": "Bajo calificacion crediticia", "id": 2, "caracteristicas":"Tarjeta de Credito","img": "../assets/2.png" },
+        {"nombre": "AMERICAN EXPREX", "clasificacion": "Bajo calificacion crediticia", "id": 3, "caracteristicas":"Tarjeta de Credito","img": "../assets/3.png" },
+        {"nombre": "Prestamo Personal en Pesos", "clasificacion": "Bajo calificacion crediticia", "id": 4, "caracteristicas":"Prestamo personal con destino Consumo Personal","img": "../assets/4.png"},
+        {"nombre": "Plazo fijo intransferible", "clasificacion": "No necesita", "id": 5, "caracteristicas":"Plazo Fijo Regulado BCRA que puede Endozarse","img": "../assets/5.png" },
+        {"nombre": "Plazo fijo transferible", "clasificacion": "No necesita", "id": 6, "caracteristicas":"Plazo Fijo Regulado BCRA que puede Endozarse","img": "../assets/6.png" },
+        {"nombre": "Plazo fijo intransferible DOLAR", "clasificacion": "No necesita", "id": 7, "caracteristicas":"Plazo Fijo en Dolares","img": "../assets/7.png" },
+        {"nombre": "Seguros", "clasificacion": "No necesita", "id": 8, "caracteristicas":"Protegete del riesgo de perder un bien que te sería difícil de reponer.","img": "../assets/8.png" },
+        {"nombre": "Tarjeta de Debito Visa", "clasificacion": "No necesita", "id": 9, "caracteristicas":"Tarjeta que permite operar en con su cuenta bancaria","img": "../assets/9.png"}
+
+   ],
+   "seguros":
+        [
+        {"id":"1","nombre":"Vida y Accidentes","abreviatura":"Vida","carac":"Asegurá el futuro de tus seres queridos ante cualquier evento inesperado. Pase lo que pase, en Macro estamos a tu lado."},
+        {"id":"2","nombre":"Hogar","abreviatura":"Combinado Familiar","carac":"Tu casa y tus pertenencias cuentan la historia de tu vida. Protegelas con una cobertura completa, automática e inmediata."},
+        {"id":"3","nombre":"Seguro Celular","abreviatura":"Celular","carac":"Tu celular te mantiene conectado con la familia, los amigos, los proyectos laborales y los recuerdos de tus experiencias. Protegelo del riesgo de robo en la vía pública o daño accidental."},
+        {"id":"4","nombre":"Seguro de Cajero","abreviatura":"Cajero","carac":"Que ningún imprevisto te sorprenda al retirar dinero o hacer alguna otra operación en el cajero automático o en la sucursal."},
+        {"id":"5","nombre":"Sepelio","abreviatura":"Fallecimiento","carac":"Un seguro que soluciona el gasto de sepelio. Esta cobertura está especialmente diseñada para acompañar a tu familia en momentos difíciles."},
+        {"id":"6","nombre":"Macro Comercio","abreviatura":"Comercio","carac":"¿Te sumaste al negocio familiar o lo creaste desde cero? No importa cómo empezaste: nosotros te ayudamos a continuar. Una cobertura para que tu negocio no se detenga."},
+        {"id":"7","nombre":"Proteccion Via Publica","abreviatura":"Via Publica","carac":"La inseguridad en la calle no se puede prevenir, pero con este seguro podés reducir el impacto: además de reponer los bienes robados, te brindamos asistencia y asesoramiento."}
+        ]
+
+   }

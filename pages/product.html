@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Banco Random</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div>BANCO RANDOM</div>
+        </nav>
+    </header>
+<!--PRODUCTOS A SELECCIONAR-->
+    <main class="mainProducto">
+      <!--PRESTAMO PERSONAL-->
+      <section class="container">
+        <h2>Con gusto te brindaremos las caracteristicas y simulaciones de nuestros productos. Queremos que elijas sabiendo.</h2>
+        <form action="productoSimulador" id="simular"  class="col-12">
+          <label for="productoSelect">Por favor, inguresa el producto a consultar</label>
+          <select name="producto" id="productoSelect" class="col-5">
+            <option selected></option>
+            <option>Simulador Prestamo Personal</option>
+            <option>Tarjetas de Credito</option>
+            <option>Seguros</option>
+            <option>Simulador Plazo Fijo</option>
+          </select>
+          <button type="submit" class="btn btn-primary">Confirmar</button>
+        </form>
+      </section>
+      <!--TABLA PRESTAMO PERSONAL -->
+        <section id="newProduct" class="container container-fluid">
+          <div class="col-12">
+            <h2>
+                Simulá la cuota de tu Préstamo
+            </h2>
+          </div>
+          <div id="prestamo"class="col-12">
+                <form action="pp" id="pp">
+                    <label for="monto">Elegí el monto de tu Préstamo</label>
+                    <input type="text" id="monto"><br><br>
+                    <label for="plazo">¿En cuántas cuotas querés pagarlo?</label>
+                    <select id="plazo">
+                        <option selected></option>
+                          <option>12</option>
+                          <option>24</option>
+                          <option>36</option>
+                          <option>48</option>
+                          <option>60</option>
+                    </select><br><br>
+                    <button type="submit" id="go" class="btn btn-primary">Simular</button><br><br>
+                </form>
+          </div>
+          
+          </div class="table-responsive">
+            <table id="completarTabla" class="table-sm table-success table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" >Vencimiento</th>
+                        <th scope="col" >Capital Residual</th>
+                        <th scope="col" >Cuota Pura</th>
+                        <th scope="col" >Interes</th>
+                        <th scope="col" >Amortizacion</th>
+                        <th scope="col" >Cuota sin IVA</th>
+                        <th scope="col" >IVA</th>
+                        <th scope="col" >Cuota a Pagar</th>
+                    </tr>
+                </thead>
+          </table>
+          </div>
+          <div id="divPP" class="col-12 text-center"><br>
+            <button class="btn btn-primary" id="buttonPP">Contratar</button>
+            <button class="btn btn-primary" id="borrarPP">Volver a elegir</button>
+            <a href="../index.html"><button class="btn btn-primary">Regresar</button></a>`
+          </div>
+        </section>
+        <!--SELECCION DE PAQUETES-->
+        <section id="paq" class="container"
+          <div>
+            <h2>Solicita un Paquete de cuentas</h2>
+          </div>
+          <div class="accordion row" id="accordionExample">
+            <div class="accordion-item col-12">
+              <h2 class="accordion-header col-12" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Paquete BASICO
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show col-12" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <p>El paquete de productos cuenta con Caja de ahorro en pesos,seguro de proteccion en Via publica y tarjeta de credito internacional (azul o gold). <span>Es necesario calificar para una tarjeta de credito</span> </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item col-12">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Paquete PREMIUM
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>El paquete de productos cuenta con Caja de ahorro en pesos, cuenta en dolares, cuenta corriente, asistencia al viajero Bonificada (VISA) y tarjeta de credito Platinum. <span>Es necesario calificar para una tarjeta de credito con limite superior a $256.000,00</span> </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item col-12">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <span> Paquete BLACK</span>
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>El paquete de productos cuenta con Caja de ahorro en pesos, cuenta en dolares, cuenta corriente, asistencia al viajero Bonificada (full), tarjeta de credito Negra, oficial de cuentas asignado, VIP en los aeropuestos y asistencia personalizada. <span>Es necesario calificar para una tarjeta de credito con limite superior a $600.000,00</span> </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div id="divPQT" class="text-center col-12">
+          <button class="btn btn-primary" id="buttonPQT">Contratar</button>
+          <button class="btn btn-primary" id="borrarPQT">Volver a elegir</button>
+          <a href="../index.html"><button class="btn btn-primary">Regresar</button></a>
+        </div>
+    </section>
+  
+    <!--SIMULADOR PLAZO FIJO-->
+    <section id="pf" class="container">
+      <div class="col-12">
+        <h2>Simula tu Plazo Fijo</h2>
+      </div>
+        <div  id="divpf" class="row">
+            <form id="simularPF" class="col-12">
+                <label for="montoPF">Monto a invertir:</label><br>
+                <input type="text" id="montoPF" placeholder="Monto minimo de $10.000,00" class="col-3"><br><br>
+                <label for="plazoPf">Plazo</label><br>
+                <input type="text" id="plazoPf" placeholder="Plazo minimo de 30 Dias" class="col-3"><br><br>
+                <label for="tipoPf">Seleccione tipo:</label><br>
+                <select id="tipoPf">
+                    <option selected></option>
+                      <option>Pesos</option>
+                      <option>Dolar</option>
+                    </select><br><br>
+                <div id="divPF" class="text-center col-12">
+                  <button type="submit" class="btn btn-primary" id="buttonPlazoFijo" >Confirmar</button>
+                  <button type="reset" class="btn btn-primary borrar" >Borrar</button>
+                  <button class="btn btn-primary" id="borrarPF">Volver a elegir</button>
+                  <a href="../index.html"><button class="btn btn-primary">Regresar</button></a>
+                  </div>
+            </form>
+
+        </div>
+
+    </section>
+    <!--SIMULADOR DE SEGUROS-->
+        <section id="seguros">
+          <h4>Seleccione el seguro sobre el cual desea enviar su solicitud:</h4>
+    </section>
+    </main>
+  <!--FOOTER-->
+    <footer>
+        <div>
+            Cerca tuyo, Siempre.
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/2.4.0/luxon.min.js" integrity="sha512-v1zUTZ9zv9Wb2scL/ANxXM6m7yegm/W5SN8SRHNFADdZIuSFFkrEBjNxO803DdFkjoCcJ88g1WHRVlLN6K/O1A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/product.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.1/math.js" integrity="sha512-qBGHnIjw1CTZC0Vpshjjb4StUqVHm8LqqE4cco3FdEu1lS+gpXv/HON5qNjNq5mVnIlZPABGqkGksRrV6NZx+A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</body>
+</html>
