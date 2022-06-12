@@ -35,7 +35,7 @@ simulador.addEventListener("submit",(e)=>{
 
 
 
-let tasaSueldo=JSON.parse(localStorage.getItem("cliente1"))[0].ps
+
 //SELECCION DE PRESTAMO PERSONAL
 let tabla=document.querySelector("#pp")
 console.log(tabla)
@@ -50,7 +50,7 @@ console.log(tabla)
         let valorPP=[{plazo:plazo},{monto:monto}]
         let valorPPLocal=JSON.stringify(valorPP)
         localStorage.setItem("tomaCredito",valorPPLocal)
-        let tasa=TNA(plazo,tasaSueldo)
+        let tasa=TNA(plazo)
         console.log(tasa)
         let tabla=document.querySelector("#completarTabla")
         tabla.style.display="block"

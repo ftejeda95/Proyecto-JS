@@ -471,8 +471,9 @@ function borrarSimulacion(button){
     })    
 }
 //DETERMINAR TASA
+
+function TNA(plazo){
 let tasaSueldo=JSON.parse(localStorage.getItem("cliente1"))[0].ps
-function TNA(plazo,tasaSueldo){
     if(tasaSueldo=="SI"){
         if(plazo==12){
             return (59/12)
@@ -540,7 +541,7 @@ function determinarCuota(monto,plazo,tasa){
         completarTabla.appendChild(fila)
     }
     let tasaPp=document.querySelector("#prestamo")
-    tasaPp.innerHTML=`<p>TNA:${TNA(plazo,tasaSueldo)*12},00%</p><br>`
+    tasaPp.innerHTML=`<p>TNA:${TNA(plazo)*12},00%</p><br>`
 }
 //FUNCION DE REINICIO DE EVENTO pagina principal
 function repeatEvent(){
