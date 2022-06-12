@@ -259,7 +259,7 @@ const crearTarjeta = (e)=>{
                     <h5 class="card-title">${producto.nombre}</h5>
                     <p class="card-text"> Necesita Calificacion: ${producto.clasificacion} \n</p>
                     <p class="card-text"> Caracteristicas: ${producto.caracteristicas}</p>
-                    <a href="../pages/product.html"><button class="btn btn-dark buttonProduct" id="new${producto.id}" >Contratar</button></a>
+                    <a href="./pages/product.html"><button class="btn btn-dark buttonProduct" id="new${producto.id}" >Contratar</button></a>
                 </div>
             </div>`
             div.classList="col-12 col-sm-6 col-md-4 m-0 row justify-content-center p-1"
