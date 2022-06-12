@@ -1,4 +1,3 @@
-export {determinarCuota,TNA} 
 import{DateTime,crearSeguro,enviarSolicitud,html,borrarSimulacion,TNA,determinarCuota,sumaFecha}from "./module.js"
 
 //ELEGIR PRODUCTO A CONTRATAR

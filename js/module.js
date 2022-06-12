@@ -740,6 +740,7 @@ function hb(selectionHB,selectionTC){
                     //CREO LOS DIVS PARA RESPUESTA
                     let createPago = document.querySelector("#divResp")
                     let inputPago = document.createElement("div")
+                    let tieneTD=JSON.parse(localStorage.getItem("poseeTD")).poseeTD
                     if(tieneTD=="SI"){
                         
                         if(valorEleccionPago==helpPagoBanelco){
@@ -853,11 +854,11 @@ function tc(selectionTC,selectionHB){
     
                                 <form id="interesTC" >
                                     <label for="deuda">ingrese Saldo Actual del Resumen:</label>
-                                        <input type="text" id="deuda" class="input col-10"><br>
+                                        <input type="text" id="deuda" class="input col-10"  placeholder="Importe en Pesos($)"><br>
                                     <label for="pagoMinimo">ingrese Pago Minimo Actual del Resumen: </label>
-                                        <input type="text" id="pagoMinimo" class="input col-10"><br>
+                                        <input type="text" id="pagoMinimo" class="input col-10" placeholder="Importe en Pesos($)"><br>
                                     <label for="plazo">ingrese Plazo de financiacion: </label>
-                                        <input type="text" id="plazo" class="input col-10"><br>
+                                        <input type="text" id="plazo" class="input col-10"  placeholder="Cantidad de cuotas a financiar"><br>
                                 <button type="submit" class="btn btn-primary">Confirmar</button>
                                 <button type="reset" class="btn btn-primary"  >Borrar</button>
                                 </form></div>
