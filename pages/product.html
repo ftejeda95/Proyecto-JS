@@ -29,7 +29,7 @@
             <option>Seguros</option>
             <option>Simulador Plazo Fijo</option>
           </select>
-          <button type="submit" class="btn btn-primary">Confirmar</button>
+          <button type="submit" class="btn btn-outline-success" id="buttonSimulador">Confirmar</button>
         </form>
       </section>
       <!--TABLA PRESTAMO PERSONAL -->
@@ -52,12 +52,12 @@
                           <option>48</option>
                           <option>60</option>
                     </select><br><br>
-                    <button type="submit" id="go" class="btn btn-primary">Simular</button><br><br>
+                    <button type="submit" id="go" class="btn btn-outline-success">Simular</button><br><br>
                 </form>
           </div>
           
           </div class="table-responsive">
-            <table id="completarTabla" class="table-sm table-success table-striped">
+            <table id="completarTabla" class="table table-bordered border-sucess">
                 <thead>
                     <tr>
                         <th scope="col" >Vencimiento</th>
@@ -73,25 +73,26 @@
           </table>
           </div>
           <div id="divPP" class="col-12 text-center"><br>
-            <button class="btn btn-primary" id="buttonPP">Contratar</button>
-            <button class="btn btn-primary" id="borrarPP">Volver a elegir</button>
-            <a href="../index.html"><button class="btn btn-primary">Regresar</button></a>`
+            <button class="btn btn-success" id="buttonPP">Contratar</button>
+            <button class="btn btn-success" id="borrarPP">Volver a elegir</button>
+            <a href="../index.html"><button class="btn btn-success">Regresar</button></a>
           </div>
         </section>
         <!--SELECCION DE PAQUETES-->
-        <section id="paq" class="container"
+        <section id="paq" class="container">
           <div>
             <h2>Solicita un Paquete de cuentas</h2>
           </div>
           <div class="accordion row" id="accordionExample">
-            <div class="accordion-item col-12">
+            <div class="accordion-item col-12 gold">
               <h2 class="accordion-header col-12" id="headingOne">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                   Paquete BASICO
                 </button>
               </h2>
-              <div id="collapseOne" class="accordion-collapse collapse show col-12" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
+              <div id="collapseOne" class="accordion-collapse collapse show col-12 align-items-center" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body row">
+                  <img class="imgPQT justify-content-center col-5" src="https://res.cloudinary.com/facuindex/image/upload/v1655063855/PROYECTO%20JS/gold_ucr8yq.webp" alt="Tarjeta GOLD" width="450px" height="350px">
                   <p>El paquete de productos cuenta con Caja de ahorro en pesos,seguro de proteccion en Via publica y tarjeta de credito internacional (azul o gold). <span>Es necesario calificar para una tarjeta de credito</span> </p>
                 </div>
               </div>
@@ -104,7 +105,8 @@
                 </button>
               </h2>
               <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
+                <div class="accordion-body row">
+                    <img class="imgPQT col-5" src="https://res.cloudinary.com/facuindex/image/upload/v1655064206/PROYECTO%20JS/platinum_ydkeeu.jpg" alt="TARJETA PLATINUM" width="450px" height="350px">
                     <p>El paquete de productos cuenta con Caja de ahorro en pesos, cuenta en dolares, cuenta corriente, asistencia al viajero Bonificada (VISA) y tarjeta de credito Platinum. <span>Es necesario calificar para una tarjeta de credito con limite superior a $256.000,00</span> </p>
                 </div>
               </div>
@@ -117,7 +119,8 @@
                 </button>
               </h2>
               <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
+                <div class="accordion-body row">
+                    <img  class="imgPQT col-5" src="https://res.cloudinary.com/facuindex/image/upload/v1655064206/PROYECTO%20JS/black_q2zgjp.jpg" alt="Tarjeta BLACK" width="450px" height="350px">
                     <p>El paquete de productos cuenta con Caja de ahorro en pesos, cuenta en dolares, cuenta corriente, asistencia al viajero Bonificada (full), tarjeta de credito Negra, oficial de cuentas asignado, VIP en los aeropuestos y asistencia personalizada. <span>Es necesario calificar para una tarjeta de credito con limite superior a $600.000,00</span> </p>
                 </div>
               </div>
@@ -126,9 +129,9 @@
           </div>
 
           <div id="divPQT" class="text-center col-12">
-          <button class="btn btn-primary" id="buttonPQT">Contratar</button>
-          <button class="btn btn-primary" id="borrarPQT">Volver a elegir</button>
-          <a href="../index.html"><button class="btn btn-primary">Regresar</button></a>
+          <button class="btn btn-success" id="buttonPQT">Contratar</button>
+          <button class="btn btn-success" id="borrarPQT">Volver a elegir</button>
+          <a href="../index.html"><button class="btn btn-success">Regresar</button></a>
         </div>
     </section>
   
@@ -149,14 +152,15 @@
                       <option>Pesos</option>
                       <option>Dolar</option>
                     </select><br><br>
-                <div id="divPF" class="text-center col-12">
-                  <button type="submit" class="btn btn-primary" id="buttonPlazoFijo" >Confirmar</button>
-                  <button type="reset" class="btn btn-primary borrar" >Borrar</button>
-                  <button class="btn btn-primary" id="borrarPF">Volver a elegir</button>
-                  <a href="../index.html"><button class="btn btn-primary">Regresar</button></a>
-                  </div>
+                <div id="divPF">
+                  <button type="submit" class="btn btn-outline-success" id="buttonPlazoFijo" >Confirmar</button>
+                  <button type="reset" class="btn btn-outline-success borrar" >Borrar</button>
+                </div>
             </form>
-
+            <div class="text-center col-12">
+              <button class="btn btn-success" id="borrarPF">Volver a elegir</button>
+              <a href="../index.html"><button class="btn btn-success">Regresar</button></a>
+            </div>
         </div>
 
     </section>

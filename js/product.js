@@ -7,6 +7,8 @@ let optionSimular=["Simulador Prestamo Personal","Tarjetas de Credito","Seguros"
 simulador.addEventListener("submit",(e)=>{
     e.preventDefault()
     console.log(e)
+    let buttonSimulador=document.querySelector("#buttonSimulador")
+    buttonSimulador.disabled=true
     let simularProducto=document.querySelector("#productoSelect").value
     console.log(simularProducto)
     if(simularProducto==optionSimular[0]){
@@ -21,13 +23,14 @@ simulador.addEventListener("submit",(e)=>{
         borrarSimulacion(resetSimulacion)
     }else if(simularProducto==optionSimular[2]){
         let simuladorPf=document.querySelector("#seguros")
-        simuladorPf.style.display="block"
-
+        simuladorPf.style.display="block" 
+        let resetSimulacion=document.querySelector("#borrarSeguros")
+        borrarSimulacion(resetSimulacion)
     }else if(simularProducto==optionSimular[3]){
         let simuladorSeguros=document.querySelector("#pf")
         simuladorSeguros.style.display="block"
-        let resetSimulacion=document.querySelector("#borrarPF")
-        borrarSimulacion(resetSimulacion)
+        let resetSimulacionPF=document.querySelector("#borrarPF")
+        borrarSimulacion(resetSimulacionPF)
     }
     
 })
@@ -67,6 +70,8 @@ console.log(tabla)
        enviarSolicitud(divPP,montopp,plazopp,seleccion)
        let formEnviarPP=document.querySelector("#newPD")
        formEnviarPP.addEventListener("submit",(e)=>{
+        let buttonConfirmar=document.querySelector("#buttonNewPP")
+        buttonConfirmar.disabled=true
         e.preventDefault()
         console.log(e)
         let enviarNombre=document.querySelector("#nombreNew").value
@@ -111,6 +116,8 @@ contrataTC.addEventListener("click",()=>{
     enviarSolicitud(divPQT,"montopp","plazopp",seleccionTC)
     let formEnviarTC=document.querySelector("#newTC")
     formEnviarTC.addEventListener("submit",(e)=>{
+    let buttonConfirmarTC=document.querySelector("#buttonNewTC")
+    buttonConfirmarTC.disabled=true
      e.preventDefault()
      console.log(e)
      let enviarNombre=document.querySelector("#nombreNew").value
@@ -149,7 +156,7 @@ contrataTC.addEventListener("click",()=>{
 
 
 let formPF=document.querySelector("#simularPF")
-formPF.addEventListener("submit",(e,TNAPF)=>{
+formPF.addEventListener("submit",(e)=>{
     e.preventDefault()
     console.log(e)
     let divPF=document.querySelector("#divpf")
@@ -175,6 +182,6 @@ let seguros=document.querySelector("#seguros")
 let segurosDiv=document.createElement("div")
 crearSeguro()
 
-
+// CLARIDAD EN EL BOTON REGRESAR, ACOMODAR CODIGO.
 
 

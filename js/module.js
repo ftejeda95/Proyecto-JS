@@ -253,13 +253,15 @@ const crearTarjeta = (e)=>{
             n+=1
             let div = document.createElement("div");
             div.innerHTML = `
-            <div class="card" style="width: 18rem;">
+            <div class="card text-center" style="width: 18rem;">
                 <img src="${producto.img}" class="card-img-top" alt="${producto.nombre}" width=180px height=230px id=img>
                 <div class="card-body">
                     <h5 class="card-title">${producto.nombre}</h5>
                     <p class="card-text"> Necesita Calificacion: ${producto.clasificacion} \n</p>
                     <p class="card-text"> Caracteristicas: ${producto.caracteristicas}</p>
-                    <a href="./pages/product.html"><button class="btn btn-dark buttonProduct" id="new${producto.id}" >Contratar</button></a>
+                    <div>
+                    <a href="./pages/product.html"><button class="btn btn-secondary" id="new${producto.id}" >Contratar</button></a>
+                    </div>
                 </div>
             </div>`
             div.classList="col-12 col-sm-6 col-md-4 m-0 row justify-content-center p-1"
@@ -287,9 +289,10 @@ const crearTarjeta = (e)=>{
                             ${producto.abreviatura}
                         </div>
                         <div class="card-body">
+                            <img src="${producto.img}" alt="${producto.nombre}">
                             <h5 class="card-title">${producto.nombre}</h5>
                             <p class="card-text">${producto.carac}</p>
-                            <a href="buttonSeg" class="btn btn-primary" id="contrataSeg${n}">Contratar</a>
+                            <a href="buttonSeg" class="btn btn-success" id="contrataSeg${n}">Contratar</a>
                         </div>
                     </div>`
                 segDiv.classList="m-0 row justify-content-center p-1"
@@ -315,8 +318,8 @@ const crearTarjeta = (e)=>{
                                 <label for="mailNew">Correo Electronico</label>
                                 <input type="text" id="mailNew" placeholder="usuaro@mail.com"><br><br>
 
-                                <button type="submit" class="btn btn-primary" id="buttonNew" >Confirmar</button>
-                                <button type="reset" class="btn btn-primary" >Borrar</button><br><br>
+                                <button type="submit" class="btn btn-success" id="buttonNew" >Confirmar</button>
+                                <button type="reset" class="btn btn-success">Borrar</button><br><br>
 
                             </form>
                         </div>`
@@ -352,9 +355,11 @@ const crearTarjeta = (e)=>{
             })      
         }
         let CreateButtonFinal=document.createElement("div")
-        let buttonFinal= `        
-            <button class="btn btn-primary" id="borrarPP">Volver a elegir</button>
-            <a href="../index.html"><button>Regresar</button></a>`
+        let buttonFinal= `  
+            <div class="col-12 text-center">      
+            <button class="btn btn-outline-success" id="borrarSeguros">Volver a elegir</button>
+            <a href="../index.html"><button class="btn btn-outline-success">Regresar</button></a>
+            </div>`
         html(seguros,CreateButtonFinal,buttonFinal)
     })}
 //FUNCION DE TOMA DE DATOS
@@ -381,7 +386,7 @@ function enviarSolicitud(id,montoPP,plazoPP,seleccion){
             <label for="mailNew">Correo Electronico</label><br>
             <input type="text" id="mailNew" placeholder="usuaro@mail.com" class="col-5"><br><br>
             </div>
-            <div class="col-6"><br><br>
+            <div class="col-6">
             <label for="actividad">Actividad</label><br>
             <input type="text" id="actividad" placeholder="ej:Monotributista/Relacion de Dependencia" class="col-5"><br><br>
 
@@ -399,14 +404,15 @@ function enviarSolicitud(id,montoPP,plazoPP,seleccion){
               <option>48</option>
               <option>60</option>
             </select><br><br>
+            <button type="submit" class="btn btn-success" id="buttonNewPP" >Confirmar</button>
+            <button type="reset" class="btn btn-success" >Borrar</button>
             </div>
+            </form>
             <div class="text-center col-12">
-            <button type="submit" class="btn btn-primary" id="buttonNew" >Confirmar</button>
-            <button type="reset" class="btn btn-primary" >Borrar</button>
-            <button class="btn btn-primary" id="borrarPP">Volver a elegir</button>
-            <a href="../index.html"><button class="btn btn-primary">Regresar</button></a>
+            <button class="btn btn-outline-success" id="borrarPP">Volver a elegir</button>
+            <a href="../index.html"><button class="btn btn-outline-success">Regresar</button></a>
             </div>
-        </form>
+
 
     </div>`
     let borrarButton=document.querySelector("#divPP")
@@ -433,11 +439,11 @@ function enviarSolicitud(id,montoPP,plazoPP,seleccion){
                 </div>
                 <div class="col-6">
                     <label for="actividad">Actividad</label><br>
-                    <input type="text" id="actividad" placeholder="ej:Monotributista/Relacion de Dependencia" class="col-7"><br><br>
+                    <input type="text" id="actividad" placeholder="ej:Monotributista/Relacion de Dependencia" class="col-7"><br>
                     <label for="ingreso">Ingreso Mensual Aproximado</label><br>
                     <input type="text" id="ingreso" placeholder="$" class="col-7"><br><br>
                     <label for="plazoMax">ingrese Plazo de maximo Esperado de tramitacion(tarjeta en mano)</label><br>
-                    <input type="text" id="plazoMax" class="input" placeholder="Demora minima 13 dias" size="20" class="col-7"><br><br>
+                    <input type="text" id="plazoMax" class="input" placeholder="Demora minima 13 dias" size="20" class="col-7"><br>
                     <label for="marca">Seleccione el Marca:</label><br>
                     <select id="marca">
                     <option selected></option>
@@ -445,15 +451,15 @@ function enviarSolicitud(id,montoPP,plazoPP,seleccion){
                       <option>MASTERCAD</option>
                       <option>AMERICAN EXPRESS</option>
                     </select><br><br>
-                </div>
-                <div class="text-center col-12">
-                    <button type="submit" class="btn btn-primary" id="buttonNewTC" >Confirmar</button>
-                    <button type="reset" class="btn btn-primary borrar" >Borrar</button>
-                    <button class="btn btn-primary" id="borrarTC" >Volver a elegir</button>
-                    <a href="../index.html"><button class="btn btn-primary">Regresar</button></a>
+                    <button type="submit" class="btn btn-outline-success" id="buttonNewTC" >Confirmar</button>
+                    <button type="reset" class="btn btn-outline-success borrar" >Borrar</button>
                 </div>
                 </form>
+                <div class="text-center col-12">
 
+                <button class="btn btn-success" id="borrarTC" >Volver a elegir</button>
+                <a href="../index.html"><button class="btn btn-success">Regresar</button></a>
+                 </div>
             </div>`
         let borrarButton=document.querySelector("#divPQT")
         borrarButton.innerHTML=""
@@ -1071,7 +1077,7 @@ function tc(selectionTC,selectionHB){
                                     repeatEvent()
                                 }else{
                                     let innerHTMLAbonaDolar=`<div><p>Al abonar en dolares, los impuestos seran descontados al cierre del resumen, por lo que debera abonar el saldo en dolares MAS el saldo en pesos menos los impuestos.</p>
-                                    <button type="" class="btn btn-primary" id="resetE" >Reiniciar</button>
+                                    <button type="" class="btn btn-succprimaryess" id="resetE" >Reiniciar</button>
                                     </div>`
                                     html(createDolarTC2,inputDolarTC2,innerHTMLAbonaDolar)
                                     repeatEvent()

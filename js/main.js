@@ -65,7 +65,7 @@ cliente.push(segmentoCliente)
     let presentacionSeg = document.createElement("div")
     //IMPRIMIR CLIENTES EN HTML
     presentacionSeg.innerHTML = `<div id="present"><p> Segun lo informado vamos a segmentar el procedimiento dadas las caracteristicas ingresadas</p><ul><li> Edad: ${age.value} </li><li> Cobra el sueldo: ${sueldo.value.toUpperCase()}</li> <li> Segmento: ${segmentoCliente.segmento}</li></ul>
-    <button type="" class="btn btn-primary" id="reset" >Modificar</button>
+    <button type="" class="btn btn-success" id="reset" >Modificar</button>
     </div> `
     presentacionSeg.className= "presentacionSeg col-12"
     segmentacion.appendChild(presentacionSeg)
