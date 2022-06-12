@@ -123,8 +123,7 @@ consulta.addEventListener("submit",(e)=>{
     html(confirmacionEnvio,mensajeConfirm,mensaje)
     })
 
-//LIBRERIA
-const DateTime = luxon.DateTime
+
 
 //DEFINICION DE PRODUCTOS, SIMIL CARRIOT DE COMPRAS.
 
