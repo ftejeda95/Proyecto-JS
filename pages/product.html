@@ -13,16 +13,18 @@
     <header>
         <nav>
             <div>BANCO RANDOM</div>
+
         </nav>
     </header>
 <!--PRODUCTOS A SELECCIONAR-->
     <main class="mainProducto">
       <!--PRESTAMO PERSONAL-->
       <section class="container">
+        <div class="divInicio">
         <h2>Con gusto te brindaremos las caracteristicas y simulaciones de nuestros productos. Queremos que elijas sabiendo.</h2>
         <form action="productoSimulador" id="simular"  class="col-12">
           <label for="productoSelect">Por favor, inguresa el producto a consultar</label>
-          <select name="producto" id="productoSelect" class="col-5">
+          <select name="producto" id="productoSelect" class="col-5" required>
             <option selected></option>
             <option>Simulador Prestamo Personal</option>
             <option>Tarjetas de Credito</option>
@@ -31,6 +33,8 @@
           </select>
           <button type="submit" class="btn btn-outline-success" id="buttonSimulador">Confirmar</button>
         </form>
+
+      </div>
       </section>
       <!--TABLA PRESTAMO PERSONAL -->
         <section id="newProduct" class="container container-fluid">
@@ -42,9 +46,9 @@
           <div id="prestamo"class="col-12">
                 <form action="pp" id="pp">
                     <label for="monto">Elegí el monto de tu Préstamo</label>
-                    <input type="text" id="monto"><br><br>
+                    <input type="text" id="monto" required><br><br>
                     <label for="plazo">¿En cuántas cuotas querés pagarlo?</label>
-                    <select id="plazo">
+                    <select id="plazo" required>
                         <option selected></option>
                           <option>12</option>
                           <option>24</option>
@@ -75,7 +79,7 @@
           <div id="divPP" class="col-12 text-center"><br>
             <button class="btn btn-success" id="buttonPP">Contratar</button>
             <button class="btn btn-success" id="borrarPP">Volver a elegir</button>
-            <a href="../index.html"><button class="btn btn-success">Regresar</button></a>
+            <a href="../index.html"><button class="btn btn-danger">Regresar al Inicio</button></a>
           </div>
         </section>
         <!--SELECCION DE PAQUETES-->
@@ -131,7 +135,7 @@
           <div id="divPQT" class="text-center col-12">
           <button class="btn btn-success" id="buttonPQT">Contratar</button>
           <button class="btn btn-success" id="borrarPQT">Volver a elegir</button>
-          <a href="../index.html"><button class="btn btn-success">Regresar</button></a>
+          <a href="../index.html"><button class="btn btn-danger">Regresar al Inicio</button></a>
         </div>
     </section>
   
@@ -143,11 +147,11 @@
         <div  id="divpf" class="row">
             <form id="simularPF" class="col-12">
                 <label for="montoPF">Monto a invertir:</label><br>
-                <input type="text" id="montoPF" placeholder="Monto minimo de $10.000,00" class="col-3"><br><br>
+                <input type="text" id="montoPF" placeholder="Monto minimo de $10.000,00" class="col-3" required><br><br>
                 <label for="plazoPf">Plazo</label><br>
-                <input type="text" id="plazoPf" placeholder="Plazo minimo de 30 Dias" class="col-3"><br><br>
+                <input type="text" id="plazoPf" placeholder="Plazo minimo de 30 Dias" class="col-3" required><br><br>
                 <label for="tipoPf">Seleccione tipo:</label><br>
-                <select id="tipoPf">
+                <select id="tipoPf" required>
                     <option selected></option>
                       <option>Pesos</option>
                       <option>Dolar</option>
@@ -159,7 +163,7 @@
             </form>
             <div class="text-center col-12">
               <button class="btn btn-success" id="borrarPF">Volver a elegir</button>
-              <a href="../index.html"><button class="btn btn-success">Regresar</button></a>
+              <a href="../index.html"><button class="btn btn-danger">Regresar al Inicio</button></a>
             </div>
         </div>
 
@@ -171,9 +175,19 @@
     </main>
   <!--FOOTER-->
     <footer>
-        <div>
+      <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-3 py-2">
+          <a href="./product.html"><button class="btn btn-outline-secondary butonRegreso">Reiniciar</button></a>
+        </div>
+        <div class="col-5">
             Cerca tuyo, Siempre.
         </div>
+        <div class="col-3 py-2">
+          <a href="../index.html"><button class="btn btn-outline-secondary butonRegreso">Regresar al Inicio</button></a>
+        </div>
+      </div>
+    </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/2.4.0/luxon.min.js" integrity="sha512-v1zUTZ9zv9Wb2scL/ANxXM6m7yegm/W5SN8SRHNFADdZIuSFFkrEBjNxO803DdFkjoCcJ88g1WHRVlLN6K/O1A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

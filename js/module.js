@@ -34,8 +34,8 @@ const poseeToken = (create,divCreate) =>{
         divCreate.innerHTML= `<div>
         <form id="formToken">
         <label for="token">¿Posee Token de Seguridad activo?</label>
-            <select id="token" class="input">
-            <option selected class="input"></option>
+            <select id="token" class="input" required>
+            <option selected class="input" ></option>
                 <option id="posee">SI</option>
                 <option id="noPosee">NO</option>
             </select>
@@ -142,7 +142,7 @@ function respClick(etiqueta,prodIndex){
     <p>Excelente! lo instruiremos es el Producto ${listaProductos[prodIndex].producto} </p>
     <form id="formPers">
         <label for="optionSelected">Seleccione un opcion para continuar:</label>
-            <select id="optionSelected" class="input">
+            <select id="optionSelected" class="input" required>
             <option selected></option>
 
               <option id="${((whatProduct(listaProductos[prodIndex].id)[0].producto).split(" ")).join("_").toLowerCase()}">${whatProduct(listaProductos[prodIndex].id)[0].producto}</option>
@@ -190,7 +190,7 @@ function respClickHelp(etiqueta,lista,prodIndex,valorEleccion,productoSelec){
     //la funcion whatoption seleciona el producto de la lista index, luego selecciono la opcion de ese producto, y me trae el id, de acuerdo al producto me trae la opcion correspondiente, ejemplo de indices seleciono indextc, busca numero de opcion[0] plan v, saca el id, como el id es 1 trae lista de plan v, con la opcion 0 que es es que consiste.
                 `<form id="formPers2">
                     <label for="help">En ${productoSelec} optó por la opcion ${valorEleccion}, cual es tu consulta?</label>
-                        <select id="help" class="input">
+                        <select id="help" class="input" required>
                         <option selected></option>
                             <option id="${((whatOption(indices[lista][prodIndex].id,productoSelec)[0]).opcion.split(" ")).join("_").toLowerCase()}">${(whatOption(indices[lista][prodIndex].id,productoSelec)[0]).opcion}</option>
                             <option id="${((whatOption(indices[lista][prodIndex].id,productoSelec)[1]).opcion.split(" ")).join("_").toLowerCase()}">${(whatOption(indices[lista][prodIndex].id,productoSelec)[1]).opcion}</option>
@@ -201,7 +201,7 @@ function respClickHelp(etiqueta,lista,prodIndex,valorEleccion,productoSelec){
             nuevo.innerHTML = `
                 <form id="formPers2">
                     <label for="help">En ${productoSelec} optó por la opcion ${valorEleccion}, cual es tu consulta?</label>
-                        <select id="help" class="input">
+                        <select id="help" class="input" required>
                         <option selected></option>
                             <option id="${((whatOption(indices[lista][prodIndex].id,productoSelec)[0]).opcion.split(" ")).join("_").toLowerCase()}">${whatOption(indices[lista][prodIndex].id,productoSelec)[0].opcion}</option>
                             <option id="${((whatOption(indices[lista][prodIndex].id,productoSelec)[1]).opcion.split(" ")).join("_").toLowerCase()}">${whatOption(indices[lista][prodIndex].id,productoSelec)[1].opcion}</option>
@@ -213,7 +213,7 @@ function respClickHelp(etiqueta,lista,prodIndex,valorEleccion,productoSelec){
                 nuevo.innerHTML = `
                     <form id="formPers2">
                         <label for="help">En ${productoSelec} optó por la opcion ${valorEleccion}, cual es tu consulta?</label>
-                            <select id="help"class="input">
+                            <select id="help"class="input" required>
                             <option selected></option>
                                 <option id="${((whatOption(indices[lista][prodIndex].id,productoSelec)[0]).opcion.split(" ")).join("_").toLowerCase()}">${whatOption(indices[lista][prodIndex].id,productoSelec)[0].opcion}</option>
                                 <option id="${((whatOption(indices[lista][prodIndex].id,productoSelec)[1]).opcion.split(" ")).join("_").toLowerCase()}">${whatOption(indices[lista][prodIndex].id,productoSelec)[1].opcion}</option>
@@ -232,12 +232,10 @@ function html(create,input,html){
     return create.appendChild(input)
 }
 //DEFINIR UN STRING VACIO
-const error=()=>{
+const error=(innerHTML)=>{
     Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Por Favor verifique, un campo requerido no fue completado.',
-        footer: '<a href="">Why do I have this issue?</a>'
+        icon: 'info',
+        text: `${innerHTML}`
       })
    
 }
@@ -307,16 +305,16 @@ const crearTarjeta = (e)=>{
                             <h4 class="p-2">Por favor complete los siguientes datos:</h4>
                             <form action="newProd" id="newSeg">
                                 <label for="nombreNew">Apellido y Nombre</label>
-                                <input type="text" id="nombreNew" placeholder="Apellido y Nombre"><br><br>
+                                <input type="text" id="nombreNew" placeholder="Apellido y Nombre" required><br><br>
 
                                 <label for="dniNew">Numero de documento</label>
-                                <input type="text" id="dniNew" placeholder="Sin puntos"><br><br>
+                                <input type="text" id="dniNew" placeholder="Sin puntos" required><br><br>
 
                                 <label for="celNew">Numero de Celular</label>
-                                <input type="text" id="celNew" placeholder="Sin 0 y sin 15"><br><br>
+                                <input type="text" id="celNew" placeholder="Sin 0 y sin 15" required><br><br>
 
                                 <label for="mailNew">Correo Electronico</label>
-                                <input type="text" id="mailNew" placeholder="usuaro@mail.com"><br><br>
+                                <input type="text" id="mailNew" placeholder="usuaro@mail.com" required><br><br>
 
                                 <button type="submit" class="btn btn-success" id="buttonNew" >Confirmar</button>
                                 <button type="reset" class="btn btn-success">Borrar</button><br><br>
@@ -350,15 +348,15 @@ const crearTarjeta = (e)=>{
                     .then((response) => response.json())
                     .then((json) => console.log(json))
                     let mensajeConfirm=document.createElement("div")
-                    let mensaje= `<p>Su consulta fue enviada con Exito, nos pondremos en contacto con usted.</p>`
-                    html(cardSeguro,mensajeConfirm,mensaje)})  
+                    let mensaje= `Su consulta fue enviada con Exito, nos pondremos en contacto con usted.`
+                    error(mensaje)})  
             })      
         }
         let CreateButtonFinal=document.createElement("div")
         let buttonFinal= `  
             <div class="col-12 text-center">      
             <button class="btn btn-outline-success" id="borrarSeguros">Volver a elegir</button>
-            <a href="../index.html"><button class="btn btn-outline-success">Regresar</button></a>
+            <a href="../index.html"><button class="btn btn-outline-danger">Regresar al Inicio</button></a>
             </div>`
         html(seguros,CreateButtonFinal,buttonFinal)
     })}
@@ -375,23 +373,23 @@ function enviarSolicitud(id,montoPP,plazoPP,seleccion){
         <form action="newProd" id="newPD" class="row">
             <div class="col-6">
             <label for="nombreNew">Apellido y Nombre</label><br>
-            <input type="text" id="nombreNew" placeholder="Apellido y Nombre" class="col-5"><br><br>
+            <input type="text" id="nombreNew" placeholder="Apellido y Nombre" class="col-5" required><br><br>
 
             <label for="dniNew">Numero de documento</label><br>
-            <input type="text" id="dniNew" placeholder="Sin puntos" class="col-5"><br><br>
+            <input type="text" id="dniNew" placeholder="Sin puntos" class="col-5" required><br><br>
 
             <label for="celNew">Numero de Celular</label><br>
-            <input type="text" id="celNew" placeholder="Sin 0 y sin 15" class="col-5"><br><br>
+            <input type="text" id="celNew" placeholder="Sin 0 y sin 15" class="col-5" required><br><br>
 
             <label for="mailNew">Correo Electronico</label><br>
-            <input type="text" id="mailNew" placeholder="usuaro@mail.com" class="col-5"><br><br>
+            <input type="text" id="mailNew" placeholder="usuaro@mail.com" class="col-5" required><br><br>
             </div>
             <div class="col-6">
             <label for="actividad">Actividad</label><br>
-            <input type="text" id="actividad" placeholder="ej:Monotributista/Relacion de Dependencia" class="col-5"><br><br>
+            <input type="text" id="actividad" placeholder="ej:Monotributista/Relacion de Dependencia" class="col-5" required><br><br>
 
             <label for="ingreso">Ingreso Mensual Aproximado:</label><br>
-            <input type="text" id="ingreso" placeholder="$" class="col-5"><br><br>
+            <input type="text" id="ingreso" placeholder="$" class="col-5" required><br><br>
 
             <p>Monto solicitado en $:${montoPP}</p>
 
@@ -410,7 +408,7 @@ function enviarSolicitud(id,montoPP,plazoPP,seleccion){
             </form>
             <div class="text-center col-12">
             <button class="btn btn-outline-success" id="borrarPP">Volver a elegir</button>
-            <a href="../index.html"><button class="btn btn-outline-success">Regresar</button></a>
+            <a href="../index.html"><button class="btn btn-outline-danger">Regresar al Inicio</button></a>
             </div>
 
 
@@ -429,23 +427,23 @@ function enviarSolicitud(id,montoPP,plazoPP,seleccion){
                 <form action="newTCred" id="newTC" class="row">
                 <div class="col-6">
                     <label for="nombreNew">Apellido y Nombre</label><br>
-                    <input type="text" id="nombreNew" placeholder="Apellido y Nombre" class="col-7"><br><br>
+                    <input type="text" id="nombreNew" placeholder="Apellido y Nombre" class="col-7" required><br><br>
                     <label for="dniNew">Numero de documento</label><br>
-                    <input type="text" id="dniNew" placeholder="Sin puntos" class="col-7"><br><br>
+                    <input type="text" id="dniNew" placeholder="Sin puntos" class="col-7" required><br><br>
                     <label for="celNew">Numero de Celular</label><br>
-                    <input type="text" id="celNew" placeholder="Sin 0 y sin 15" class="col-7"><br><br>
+                    <input type="text" id="celNew" placeholder="Sin 0 y sin 15" class="col-7" required><br><br>
                     <label for="mailNew">Correo Electronico</label><br>
-                    <input type="text" id="mailNew" placeholder="usuaro@mail.com" class="col-7"><br><br>
+                    <input type="text" id="mailNew" placeholder="usuaro@mail.com" class="col-7" required><br><br>
                 </div>
                 <div class="col-6">
                     <label for="actividad">Actividad</label><br>
-                    <input type="text" id="actividad" placeholder="ej:Monotributista/Relacion de Dependencia" class="col-7"><br>
+                    <input type="text" id="actividad" placeholder="ej:Monotributista/Relacion de Dependencia" class="col-7" required><br>
                     <label for="ingreso">Ingreso Mensual Aproximado</label><br>
-                    <input type="text" id="ingreso" placeholder="$" class="col-7"><br><br>
+                    <input type="text" id="ingreso" placeholder="$" class="col-7" required><br><br>
                     <label for="plazoMax">ingrese Plazo de maximo Esperado de tramitacion(tarjeta en mano)</label><br>
-                    <input type="text" id="plazoMax" class="input" placeholder="Demora minima 13 dias" size="20" class="col-7"><br>
+                    <input type="text" id="plazoMax" class="input" placeholder="Demora minima 13 dias" size="20" class="col-7" required><br>
                     <label for="marca">Seleccione el Marca:</label><br>
-                    <select id="marca">
+                    <select id="marca" required>
                     <option selected></option>
                       <option>VISA</option>
                       <option>MASTERCAD</option>
@@ -458,7 +456,7 @@ function enviarSolicitud(id,montoPP,plazoPP,seleccion){
                 <div class="text-center col-12">
 
                 <button class="btn btn-success" id="borrarTC" >Volver a elegir</button>
-                <a href="../index.html"><button class="btn btn-success">Regresar</button></a>
+                <a href="../index.html"><button class="btn btn-danger">Regresar al Inicio</button></a>
                  </div>
             </div>`
         let borrarButton=document.querySelector("#divPQT")
@@ -613,10 +611,11 @@ function hb(selectionHB,selectionTC){
                             let innerHTMLTKeyConsejo = `<div><p>Las claves a ingresar deben tener minimas medidas de seguridad, haremos un ejemplo de clave.</p>
                             <form id="frase">
                             <label for="ejFrase"> Por Favor, Ingrese una frase: por ejemplo, me recibi de licenciado en adminitracion en 2019: </label>
-                            <input type="text" id="ejFrase" class="col-5"><br>
+                            <input type="text" id="ejFrase" class="col-5" required><br><br>
                             <div class="text-center col-12">
                                 <button type="submit" class="btn btn-primary">Confirmar</button>
                                 <button type="reset" class="btn btn-primary">Borrar</button>
+                                <button type="" class="btn btn-primary" id="resetE">Reiniciar</button>
                             </div>
                             </form></div>`
                             html(creatHB,inputHB,innerHTMLTKeyConsejo)                       
@@ -627,17 +626,13 @@ function hb(selectionHB,selectionTC){
                                 console.log(e)
                                 let valueFrase = document.querySelector("#ejFrase").value
                                 console.log(valueFrase)
-                                if(valueFrase==""){
-                                    error()
-                                }
                             let respuesta = document.querySelector("#divResp")
                             let  respConsejo = document.createElement("div")
                             let innerHTMLTCosnejo=
-                            `<p>Sumaremos las primeras letras tendremos que su clave: ${iniciales(valueFrase).join(" + ").toUpperCase()}</p>
-                            <p>Recomendamos que utilices una frase que sea conocida para ti e ingreses solo las primeras letras de las palabras de dicha frase! Suerte!</p>
-                            <button type="" class="btn btn-primary" id="resetE">Reiniciar</button>
+                            `Sumaremos las primeras letras tendremos que su clave: ${iniciales(valueFrase).join(" + ").toUpperCase()}.
+                            Recomendamos que utilices una frase que sea conocida para ti e ingreses solo las primeras letras de las palabras de dicha frase! Suerte!
                             `
-                            html(respuesta,respConsejo,innerHTMLTCosnejo)
+                            error(innerHTMLTCosnejo)
                             repeatEvent()
     
                             })
@@ -684,8 +679,7 @@ function hb(selectionHB,selectionTC){
                     let helpTokenBorrar= document.querySelector(`#${((whatOption(indices[1][1].id,"Banca Internet")[1]).opcion.split(" ")).join("_").toLowerCase()}`).value
                     let helpTokenRostro = document.querySelector(`#${((whatOption(indices[1][1].id,"Banca Internet")[2]).opcion.split(" ")).join("_").toLowerCase()}`).value
                     //CREO DIVS DE RESPUESTA
-                    //let createtoken = document.querySelector("#divResp")
-                    //let inputToken = document.createElement("div")
+
                     sinToken(valorEleccionToken,helpSinToken,helpTokenBorrar,helpTokenRostro,creatHB,inputHB)
             })})}
             // SELECCIONO TRANSFERENCIAS DE FONDOS
@@ -859,14 +853,15 @@ function tc(selectionTC,selectionHB){
                                 <p>Calcularemos la cuota que abonaria segun el plazo y la deuda total</p>
     
                                 <form id="interesTC" >
-                                    <label for="deuda">ingrese Saldo Actual del Resumen:</label>
-                                        <input type="text" id="deuda" class="input col-10"  placeholder="Importe en Pesos($)"><br>
-                                    <label for="pagoMinimo">ingrese Pago Minimo Actual del Resumen: </label>
-                                        <input type="text" id="pagoMinimo" class="input col-10" placeholder="Importe en Pesos($)"><br>
-                                    <label for="plazo">ingrese Plazo de financiacion: </label>
-                                        <input type="text" id="plazo" class="input col-10"  placeholder="Cantidad de cuotas a financiar"><br>
+                                    <label for="deuda">ingrese Saldo Actual del Resumen:</label><br>
+                                        <input type="text" id="deuda" class="input col-4"  placeholder="Importe en Pesos($)" required><br>
+                                    <label for="pagoMinimo">ingrese Pago Minimo Actual del Resumen: </label><br>
+                                        <input type="text" id="pagoMinimo" class="input col-4" placeholder="Importe en Pesos($)" required><br>
+                                    <label for="plazo">ingrese Plazo de financiacion: </label><br>
+                                        <input type="text" id="plazo" class="input col-4"  placeholder="Cantidad de cuotas a financiar" required><br>
                                 <button type="submit" class="btn btn-primary">Confirmar</button>
                                 <button type="reset" class="btn btn-primary"  >Borrar</button>
+                                <button type="" class="btn btn-primary" id="resetE" >Reiniciar</button>
                                 </form></div>
                                 `;
                                 html(createTC,inputTC,innerHTMLTC)
@@ -879,9 +874,6 @@ function tc(selectionTC,selectionHB){
                                     let deuda = document.querySelector("#deuda").value
                                     let pagoMinimo = document.querySelector("#pagoMinimo").value
                                     let plazo = document.querySelector("#plazo").value
-                                    if(deuda==""||pagoMinimo==""||plazo==""){
-                                        error()
-                                    }
                                     let tasa = ((0.51/plazo))
                                     console.log(tasa)
                                     let saldoAdeudado = (deuda-pagoMinimo);
@@ -892,11 +884,10 @@ function tc(selectionTC,selectionHB){
                                     let cuota = numerador / denominador
                                     cuota = cuota.toFixed(2)
     
-                                    let innerHTMLTC2 = `<div>
-                                    <p>Usted abonara ${plazo} cuotas de ${cuota} devolviendo en total ${cuota*plazo}</p>
-                                    <button type="" class="btn btn-primary" id="resetE" >Reiniciar</button>
-                                    </div>`
-                                    html(nuevoDiv,inputDiv,innerHTMLTC2)
+                                    let innerHTMLTC2 = `
+                                    Usted abonara ${plazo} cuotas de ${cuota} devolviendo en total ${cuota*plazo}`
+                                    error(innerHTMLTC2)
+
                                     repeatEvent()
                                 })
                                 
@@ -921,22 +912,23 @@ function tc(selectionTC,selectionHB){
                                         <form id="interesTCMora" class="col-12 row" >
                                             <div class="col-12 col-md-6">
                                                 <label for="sa">Ingrese el Saldo Actual del resumen:</label><br>
-                                                    <input type="text" id="sa" class="input col-10" placeholder="Importe en Pesos($)"><br>
+                                                    <input type="text" id="sa" class="input col-10" placeholder="Importe en Pesos($)" required><br>
                                                 <label for="pm">Ingrese el Pago Minimo del resumen:</label><br>
-                                                    <input type="text" id="pm" class="input col-10"  placeholder="Importe en Pesos($)"><br>
+                                                    <input type="text" id="pm" class="input col-10"  placeholder="Importe en Pesos($)" required><br>
                                                 <label for="pago">Ingrese pago realizado: </label><br>
-                                                    <input type="text" id="pago" class="input col-10"  placeholder="Importe en Pesos($)"><br>
+                                                    <input type="text" id="pago" class="input col-10"  placeholder="Importe en Pesos($)" required><br>
                                             </div>
                                             <div class="col-12 col-md-6">
                                             <br>
                                                 <label for="fechaPago">Ingrese fecha de pago:</label><br>
-                                                    <input type="date" id="fechaPago" class="input col-10"><br>   
+                                                    <input type="date" id="fechaPago" class="input col-10" required><br>   
                                                 <label for="fechaVenc">Ingrese fecha de Vencimiento del Resumen:</label><br>
-                                                    <input type="date" id="fechaVenc" class="input col-10"><br>
+                                                    <input type="date" id="fechaVenc" class="input col-10" required><br>
                                             </div>
                                             <div class="col-12 text-center">
                                                 <button type="submit" class="btn btn-primary" >Confirmar</button>
                                                 <button type="reset" class="btn btn-primary" id="" >Borrar</button>
+                                                <button type="" class="btn btn-primary" id="resetE" >Reiniciar</button>
                                             </div>
                                         </form>
                                 </div>`
@@ -950,9 +942,6 @@ function tc(selectionTC,selectionHB){
                                 let pago= document.querySelector("#pago").value
                                 let fechaPagoInput = document.querySelector("#fechaPago").value
                                 let fechaVencInput = document.querySelector("#fechaVenc").value
-                                if(sa==""||pm==""||pago==""||fechaPagoInput==""||fechaVencInput==""){
-                                    error()
-                                }
                                 let fechaPagoLuxon=DateTime.fromISO(fechaPagoInput)  
                                 let fechaVencLuxon =DateTime.fromISO(fechaVencInput)
                                 console.log(fechaPagoLuxon.month)
@@ -963,18 +952,14 @@ function tc(selectionTC,selectionHB){
                                 let createTcMora = document.querySelector("#divResp")
                                 let inputTcMora = document.createElement("div")
                                     if((pago>=pm) || (fechaPagoInput<=fechaVencInput)){
-                                        let innerHTMLMora2=`<div><p>No corresponde abonar Interes Punitorio dado que abono mas o igual de pago minimo dentro de la fecha de vencimiento</p>
-                                        <button type="" class="btn btn-primary" id="resetE" >Reiniciar</button>
-                                        </div>`
-                                        html(createTcMora,inputTcMora,innerHTMLMora2)
+                                        let innerHTMLMora2=`No corresponde abonar Interes Punitorio dado que abono mas o igual de pago minimo dentro de la fecha de vencimiento`
+                                        error(innerHTMLMora2)
                                         repeatEvent()
                                     } else{
                                         let saldoPunitorio = pm - pago
                                         let intPunitorio = (saldoPunitorio*(diasAtraso)*tna)/(365*100)
-                                        let innerHTMLMora3=`<div><p>Usted abonara ${intPunitorio.toFixed(2)} correspondiente a intereses punitorios</p>
-                                        <button type="" class="btn btn-primary" id="resetE" >Reiniciar</button>
-                                        </div>`
-                                        html(createTcMora,inputTcMora,innerHTMLMora3)
+                                        let innerHTMLMora3=`Usted abonara ${intPunitorio.toFixed(2)} correspondiente a intereses punitorios`
+                                        error(innerHTMLMora3)
                                         repeatEvent()
                                     }
                                 
@@ -997,7 +982,7 @@ function tc(selectionTC,selectionHB){
                             let innerHTMLBlanqueo=`<div>
                             <form id="blanqueoTC">
                             <label for="blanqueo">Posee clave Telefonica?: </label>
-                                <select id="blanqueo" class="input">
+                                <select id="blanqueo" class="input" required>
                                 <option selected></option>
                                     <option id="poseeClave">SI</option>
                                     <option id="noPoseeClave">NO</option>
@@ -1052,7 +1037,7 @@ function tc(selectionTC,selectionHB){
                                 <form id="dolarTC">
                                 <label for="dolar">Abonara en:</label>
                                     <select id="dolar" class="input">
-                                    <option selected></option>
+                                    <option selected required></option>
                                         <option id="abonaPesos">Pesos</option>
                                         <option id="abonaDolar">Dolar</option>
                                     </select>

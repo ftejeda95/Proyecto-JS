@@ -94,19 +94,19 @@
                     <form id="formSaludo" class="row" >
                         <div class="col-12 col-md-6">
                             <label for="nombre">Bienvenido a Banco Random, por favor ingrese su nombre y apellido:</label><br>
-                            <input type="text" id="nombre"><br>
+                            <input type="text" id="nombre" required><br>
                             <label for="edad">Por favor ingrese su edad:</label><br>
-                            <input type="text" id="edad" ><br>
+                            <input type="text" id="edad" required><br>
                         </div>
                         <div class="col-12 col-md-6">
                             <label for="sueldo">Cobra su sueldo en Banco macro?: ingrese SI/NO</label><br>
-                                    <select id="sueldo" >
+                                    <select id="sueldo" required>
                                     <option selected></option>
                                       <option>SI</option>
                                       <option>NO</option>
                                     </select><br>
                             <label for="poseeTd">Actualmente posee tarjeta de debito vigente?: SI/NO</label><br>
-                                    <select id="poseeTd">
+                                    <select id="poseeTd" required>
                                     <option selected></option>
                                         <option>SI</option>
                                         <option>NO</option>
@@ -141,17 +141,17 @@
                     <form id="enviarConsulta" class="col-12 row">
                         <div class="col-12 col-md-6">
                         <label for="nombreConsulta">Apellido y Nombre</label><br>
-                        <input type="text" id="nombreConsulta" placeholder="Apellido y Nombre"><br><br>
+                        <input type="text" id="nombreConsulta" placeholder="Apellido y Nombre" required><br><br>
                         <label for="dni">Numero de documento</label><br>
-                        <input type="text" id="dni" placeholder="Sin puntos"><br><br>
+                        <input type="text" id="dni" placeholder="Sin puntos" required><br><br>
                         <label for="cel">Numero de Celular</label><br>
-                        <input type="text" id="cel" placeholder="Sin 0 y sin 15"><br><br>
+                        <input type="text" id="cel" placeholder="Sin 0 y sin 15" required><br><br>
                         <label for="mail">Correo Electronico</label><br>
-                        <input type="text" id="mail" placeholder="usuaro@mail.com"><br><br>
+                        <input type="text" id="mail" placeholder="usuaro@mail.com" required><br><br>
                         </div>
                         <div class="col-12 col-md-6">
                         <label for="prodConsulta">Seleccione el Producto a Consultar:</label><br>
-                                <select id="prodConsulta">
+                                <select id="prodConsulta" required>
                                 <option selected></option>
                                   <option>Tarjeta de Credito</option>
                                   <option>Banca Internet</option>
@@ -162,11 +162,11 @@
                             <textarea name="consulta" id="sendConsulta" cols="47" rows="5" placeholder="Ingrese su consulta"></textarea><br><br>
                         </div>
                         <div class="col-12 text-center">
-                        <button type="submit" class="btn btn-primary" id="buttonConsulta" >Confirmar</button>
+                        <button type="submit" class="btn btn-primary" id="buttonConsulta">Confirmar</button>
                         <button type="reset" class="btn btn-primary" id="" >Borrar</button><br>
                         </div>
-                </form>
-            </div>
+                    </form>
+                </div>
                    
             </div>
             

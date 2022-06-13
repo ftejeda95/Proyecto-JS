@@ -117,10 +117,9 @@ consulta.addEventListener("submit",(e)=>{
     })
         .then((response) => response.json())
         .then((json) => console.log(json))
-    let confirmacionEnvio=document.querySelector("#envioConsulta")
-    let mensajeConfirm=document.createElement("div")
-    let mensaje= `<p>Su consulta fue enviada con Exito, nos pondremos en contacto con usted.</p>`
-    html(confirmacionEnvio,mensajeConfirm,mensaje)
+        let mensaje= `Su consulta fue enviada con Exito, nos pondremos en contacto con usted.`
+        error(mensaje)
+
     })
 
 
@@ -161,6 +160,6 @@ for(var i = 0; i < inputClassOption.length; i+=1)
 
     
 
-
+// FALTA BOTON DE REGRESO Y ACLARAR QUE EL BOTON REGRESAR ES PARA INDEX
         
            

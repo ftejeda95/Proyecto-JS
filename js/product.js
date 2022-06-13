@@ -1,4 +1,4 @@
-import{DateTime,crearSeguro,enviarSolicitud,html,borrarSimulacion,TNA,determinarCuota,sumaFecha}from "./module.js"
+import{DateTime,crearSeguro,enviarSolicitud,html,borrarSimulacion,TNA,determinarCuota,sumaFecha,error}from "./module.js"
 
 //ELEGIR PRODUCTO A CONTRATAR
 
@@ -102,10 +102,9 @@ console.log(tabla)
         })
             .then((response) => response.json())
             .then((json) => console.log(json))
-        let confirmacionEnvio=document.querySelector("#newProduct")
-        let mensajeConfirm=document.createElement("div")
-        let mensaje= `<p>Su consulta fue enviada con Exito, nos pondremos en contacto con usted.</p>`
-        html(confirmacionEnvio,mensajeConfirm,mensaje)
+            let mensaje= `Su consulta fue enviada con Exito, nos pondremos en contacto con usted.`
+            error(mensaje)
+      
        })
 })  
 // CLIENTE CONTRATA TC
@@ -146,10 +145,10 @@ contrataTC.addEventListener("click",()=>{
      })
          .then((response) => response.json())
          .then((json) => console.log(json))
-     let confirmacionEnvio=document.querySelector("#paq")
-     let mensajeConfirm=document.createElement("div")
-     let mensaje= `<p>Su consulta fue enviada con Exito, nos pondremos en contacto con usted.</p>`
-     html(confirmacionEnvio,mensajeConfirm,mensaje)
+         
+         let mensaje= `Su consulta fue enviada con Exito, nos pondremos en contacto con usted.`
+         error(mensaje)
+
     })
 })
 //CLIENTE CONTRATA PLAZO FIJO
@@ -167,13 +166,13 @@ formPF.addEventListener("submit",(e)=>{
     if(tipoPF=="Pesos"){
         let interesPF=0
         interesPF=(montoPF*plazoPF*48)/(365*100)
-        let innerHTMLPFIntranf=`<p>La inversion de $${montoPF.toFixed(2)} emitira $${interesPF.toFixed(2)} en ${plazoPF} días`
-        html(divPF,divPFCreate,innerHTMLPFIntranf)
-    }else if(tipoPF=="Dolar"){
+        let innerHTMLPFIntranf=`La inversion de $${montoPF.toFixed(2)} emitira $${interesPF.toFixed(2)} en ${plazoPF} días`
+        error(innerHTMLPFIntranf)
+        }else if(tipoPF=="Dolar"){
         let interesPF=0
         interesPF=(montoPF*plazoPF*0.1)/(365*100)
-        let innerHTMLPFIntranf=`<p>La inversion de U$S${montoPF.toFixed(2)} emitira U$S${interesPF.toFixed(2)} en ${plazoPF} días`
-        html(divPF,divPFCreate,innerHTMLPFIntranf)
+        let innerHTMLPFIntranf=`La inversion de U$S${montoPF.toFixed(2)} emitira U$S${interesPF.toFixed(2)} en ${plazoPF} días`
+        error(innerHTMLPFIntranf)
     }
 })
 
